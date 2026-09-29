@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#05070d" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305070d'/%3E%3Cpath d='M16 3l7 20-7-4-7 4z' fill='%23ff5a1f'/%3E%3C/svg%3E" />
+<title>MACH 25 — The Rocket Archive</title>
+<meta name="description" content="MACH 25 — a cinematic archive of the machines that escaped Earth. Real specifications, live-scale 3D models, and the numbers behind orbital flight." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;700&family=Anton&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="is-loading">
+
+<!-- ============ BOOT LOADER ============ -->
+<div id="boot" aria-hidden="true">
+  <div class="boot__inner">
+    <div class="boot__brand">MACH&nbsp;25</div>
+    <div class="boot__bar"><div class="boot__fill" id="bootFill"></div></div>
+    <div class="boot__log" id="bootLog"></div>
+  </div>
+</div>
+
+<!-- ============ GRAIN + VIGNETTE ============ -->
+<div class="fx-grain" aria-hidden="true"></div>
+<div class="fx-vignette" aria-hidden="true"></div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" id="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scrollprog" id="scrollProg" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" data-cursor="link">
+    <span class="nav__brand-mark"></span>
+    <span class="nav__brand-text">MACH<span class="nav__brand-num">25</span></span>
+  </a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#pulse" data-cursor="link"><i>01</i>Pulse</a>
+    <a href="#lineage" data-cursor="link"><i>02</i>Lineage</a>
+    <a href="#fleet" data-cursor="link"><i>03</i>Fleet</a>
+    <a href="#anatomy" data-cursor="link"><i>04</i>Anatomy</a>
+    <a href="#data" data-cursor="link"><i>05</i>Data</a>
+    <a href="#engines" data-cursor="link"><i>06</i>Engines</a>
+    <a href="#schedule" data-cursor="link"><i>07</i>Schedule</a>
+  </nav>
+  <div class="nav__status" id="navStatus">
+    <span class="dot-live"></span><span id="navStatusText">TELEMETRY&nbsp;NOMINAL</span>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="hero">
+  <canvas id="heroCanvas" class="hero__canvas"></canvas>
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__hud hero__hud--tl" aria-hidden="true">
+    <span class="hud-line">ARCHIVE / ORBITAL CLASS</span>
+    <span class="hud-line dim">EST. 1926 — PRESENT</span>
+  </div>
+  <div class="hero__hud hero__hud--tr" aria-hidden="true">
+    <span class="hud-line" id="hudClock">--:--:-- UTC</span>
+    <span class="hud-line dim">T+ <span id="hudT">000:00:00</span></span>
+  </div>
+  <div class="hero__hud hero__hud--bl" aria-hidden="true">
+    <span class="hud-line dim">VEHICLE STACK</span>
+    <span class="hud-line">STARSHIP · SUPER HEAVY</span>
+  </div>
+  <div class="hero__hud hero__hud--br" aria-hidden="true">
+    <span class="hud-line dim">ORBITAL VELOCITY</span>
+    <span class="hud-line">7,840 M/S · MACH 22.9</span>
+  </div>
+
+  <div class="hero__content">
+    <div class="hero__eyebrow reveal"><span class="rule"></span>THE ROCKET ARCHIVE<span class="rule"></span></div>
+    <h1 class="hero__title">
+      <span class="line"><span class="line__in">MACH&nbsp;25</span></span>
+      <span class="line line--sm"><span class="line__in">THE MACHINES THAT</span></span>
+      <span class="line line--sm"><span class="line__in">ESCAPED&nbsp;EARTH</span></span>
+    </h1>
+    <p class="hero__sub reveal" data-delay="200">
+      Every liquid engine, every stage, every machine that crossed the Karman line — rebuilt in
+      true scale from real flight data. This is not a gallery. It is an archive of escape velocity.
+    </p>
+    <div class="hero__cta reveal" data-delay="320">
+      <a href="#fleet" class="btn btn--hot" data-cursor="link"><span>ENTER THE FLEET</span><svg viewBox="0 0 24 24" class="btn__arr"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      <a href="#lineage" class="btn btn--ghost" data-cursor="link"><span>91 YEARS OF FIRE</span></a>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>SCROLL</span><span class="hero__scroll-track"><i></i></span>
+  </div>
+</section>
+
+<!-- ============================ 01 PULSE ============================ -->
+<section class="sec sec--pulse" id="pulse" data-sec="01">
+  <div class="sec__head">
+    <div class="sec__num reveal">01</div>
+    <h2 class="sec__title reveal" data-delay="80">PULSE<span class="sec__title-sub">the state of launch</span></h2>
+  </div>
+  <div class="pulse__live reveal" id="pulseLive" aria-label="Live telemetry"></div>
+  <div class="pulse__grid" id="pulseGrid"></div>
+  <p class="pulse__foot reveal" id="pulseFoot"></p>
+</section>
+
+<!-- ============================ 02 LINEAGE ============================ -->
+<section class="sec sec--lineage" id="lineage" data-sec="02">
+  <div class="sec__head">
+    <div class="sec__num reveal">02</div>
+    <h2 class="sec__title reveal" data-delay="80">LINEAGE<span class="sec__title-sub">a century of firsts</span></h2>
+  </div>
+  <div class="lineage" id="lineageWrap">
+    <div class="lineage__hint reveal" id="lineageHint">drag or scroll to travel the timeline →</div>
+    <div class="lineage__eras reveal" id="lineageEras" role="group" aria-label="Filter lineage by era"></div>
+    <div class="lineage__track" id="lineageTrack"></div>
+    <div class="lineage__rail"><div class="lineage__progress" id="lineageProg"></div></div>
+  </div>
+</section>
+
+<!-- ============================ 03 FLEET ============================ -->
+<section class="sec sec--fleet" id="fleet" data-sec="03">
+  <div class="sec__head">
+    <div class="sec__num reveal">03</div>
+    <h2 class="sec__title reveal" data-delay="80">FLEET<span class="sec__title-sub">true-scale 3D archive</span></h2>
+  </div>
+
+  <div class="fleet">
+    <div class="fleet__stage">
+      <canvas id="fleetCanvas"></canvas>
+      <div class="fleet__ruler" id="fleetRuler" aria-hidden="true"></div>
+      <div class="fleet__hint" id="fleetHint">DRAG TO ROTATE · SCROLL TO ZOOM</div>
+      <div class="telem" id="fleetTelem" aria-hidden="true" hidden></div>
+    </div>
+
+    <aside class="fleet__panel">
+      <div class="fp__head">
+        <div>
+          <div class="fp__eyebrow" id="fpEyebrow">VEHICLE / ACTIVE</div>
+          <h3 class="fp__name" id="fpName">—</h3>
+          <div class="fp__meta" id="fpMeta">—</div>
+        </div>
+        <div class="fp__tag" id="fpTag">—</div>
+      </div>
+      <p class="fp__notes" id="fpNotes">—</p>
+      <div class="fp__specs" id="fpSpecs"></div>
+      <div class="fp__bar" id="fpThrust"></div>
+    </aside>
+  </div>
+
+  <div class="fleet__controls">
+    <div class="fleet__chips" id="fleetChips"></div>
+    <div class="fleet__actions">
+      <button class="btn btn--ghost btn--sm" id="btnTelem" data-cursor="link"><span>TELEMETRY</span></button>
+      <button class="btn btn--ghost btn--sm" id="btnCompare" data-cursor="link"><span>COMPARE MODE</span></button>
+      <button class="btn btn--ghost btn--sm" id="btnResetView" data-cursor="link"><span>RESET VIEW</span></button>
+    </div>
+  </div>
+
+  <div class="compare" id="comparePanel" hidden>
+    <div class="compare__col" id="cmpA"></div>
+    <div class="compare__vs">VS</div>
+    <div class="compare__col" id="cmpB"></div>
+  </div>
+</section>
+
+<!-- ============================ 04 ANATOMY ============================ -->
+<section class="sec sec--anatomy" id="anatomy" data-sec="04">
+  <div class="sec__head">
+    <div class="sec__num reveal">04</div>
+    <h2 class="sec__title reveal" data-delay="80">ANATOMY<span class="sec__title-sub">an orbital rocket, dissected</span></h2>
+  </div>
+  <div class="anatomy">
+    <div class="anatomy__viz">
+      <svg id="anatomySvg" viewBox="0 0 420 760" aria-hidden="true"></svg>
+      <div class="anatomy__labels" id="anatomyLabels"></div>
+    </div>
+    <div class="anatomy__text" id="anatomyText"></div>
+  </div>
+</section>
+
+<!-- ============================ 05 DATA ============================ -->
+<section class="sec sec--data" id="data" data-sec="05">
+  <div class="sec__head">
+    <div class="sec__num reveal">05</div>
+    <h2 class="sec__title reveal" data-delay="80">DATA<span class="sec__title-sub">the tyranny of the rocket equation</span></h2>
+  </div>
+  <div class="data">
+    <div class="data__tabs" id="dataTabs"></div>
+    <div class="data__chips reveal" id="dataChips" role="group" aria-label="Toggle vehicles in the chart"></div>
+    <div class="data__stage">
+      <canvas id="chartCanvas"></canvas>
+      <div class="data__legend" id="chartLegend"></div>
+    </div>
+    <div class="data__read" id="chartRead"></div>
+  </div>
+</section>
+
+<!-- ============================ 06 ENGINES ============================ -->
+<section class="sec sec--engines" id="engines" data-sec="06">
+  <div class="sec__head">
+    <div class="sec__num reveal">06</div>
+    <h2 class="sec__title reveal" data-delay="80">ENGINES<span class="sec__title-sub">the heart of the machine</span></h2>
+  </div>
+  <div class="engines">
+    <div class="engines__table" id="engineTable"></div>
+    <div class="engines__hint" id="engineHint" aria-hidden="true">scroll sideways for full specs →</div>
+  </div>
+</section>
+
+<!-- ============================ 07 SCHEDULE ============================ -->
+<section class="sec sec--schedule" id="schedule" data-sec="07">
+  <div class="sec__head">
+    <div class="sec__num reveal">07</div>
+    <h2 class="sec__title reveal" data-delay="80">SCHEDULE<span class="sec__title-sub">the next machines to fly</span></h2>
+  </div>
+  <div class="countdown" id="countdown">
+    <div class="countdown__label">COUNTDOWN TO NEXT CONFIRMED LAUNCH</div>
+    <div class="countdown__mission" id="cdMission">—</div>
+    <div class="countdown__clock" id="cdClock"></div>
+    <div class="countdown__bar"><div id="cdBar"></div></div>
+  </div>
+  <div class="launches" id="launchList"></div>
+  <p class="launches__note" id="launchNote"></p>
+</section>
+
+<!-- ============================ 08 SHOCK ============================ -->
+<section class="sec sec--shock" id="shock" data-sec="08">
+  <div class="sec__head">
+    <div class="sec__num reveal">08</div>
+    <h2 class="sec__title reveal" data-delay="80">SHOCK<span class="sec__title-sub">numbers that don't compute</span></h2>
+  </div>
+  <div class="marquee" id="marquee" aria-hidden="true"></div>
+  <div class="shock" id="shockGrid"></div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="foot">
+  <div class="foot__big">ESCAPE<br/>VELOCITY</div>
+  <div class="foot__cols">
+    <div>
+      <h4>ARCHIVE</h4>
+      <a href="#lineage" data-cursor="link">Lineage</a>
+      <a href="#fleet" data-cursor="link">Fleet</a>
+      <a href="#engines" data-cursor="link">Engines</a>
+    </div>
+    <div>
+      <h4>DATA</h4>
+      <a href="#pulse" data-cursor="link">Pulse</a>
+      <a href="#data" data-cursor="link">Charts</a>
+      <a href="#schedule" data-cursor="link">Schedule</a>
+    </div>
+    <div>
+      <h4>SOURCES</h4>
+      <span id="footSources">NASA · ESA · Wikipedia · Manufacturer data</span>
+    </div>
+  </div>
+  <div class="foot__base">
+    <span>MACH 25 — an interactive archive of launch vehicles.</span>
+    <span>Every figure sourced · every model built from real dimensions · <span id="footYear"></span></span>
+  </div>
+</footer>
+
+<script type="importmap">
+{ "imports": { "three": "./vendor/three/three.module.js" } }
+</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
