@@ -86,27 +86,53 @@ export function initAnatomy() {
 
   const g = mk('g', {});
 
+  // body bounds — declared before stageY, which is called immediately below
+  const bodyY1 = bodyTop + noseH, bodyY2 = bodyBot;
+
+  /* Separation planes (fraction of body height, from the top):
+       fairing line ~0.32  → everything above = nose + fairing (payload)
+       interstage  ~0.72   → everything above = second stage
+     Dragging the scrubber lifts the upper stacks off the booster. Each
+     plane is a real disconnect on the vehicle, so the split is honest. */
+  const SEPS = [
+    { yFrac: 0.32, label: 'PAYLOAD FAIRING JETTISON' },
+    { yFrac: 0.72, label: 'STAGE SEPARATION' },
+  ];
+  const stageY = (f) => bodyY1 + (bodyY2 - bodyY1) * f;
+
   // engine glow under the vehicle
   g.appendChild(mk('ellipse', { cx, cy: bodyBot + 34, rx: 70, ry: 30, fill: 'url(#glowG)' }));
 
-  // interstage lines
-  [bodyTop + noseH + (bodyBot - bodyTop - noseH) * 0.32, bodyTop + noseH + (bodyBot - bodyTop - noseH) * 0.72].forEach((y) => {
-    g.appendChild(mk('line', { x1: cx - bodyW / 2, y1: y, x2: cx + bodyW / 2, y2: y, stroke: '#3a4356', 'stroke-width': 1.5 }));
+  // interstage lines (the visible separation seams)
+  SEPS.forEach((s) => {
+    g.appendChild(mk('line', { x1: cx - bodyW / 2, y1: stageY(s.yFrac), x2: cx + bodyW / 2, y2: stageY(s.yFrac), stroke: '#3a4356', 'stroke-width': 1.5 }));
   });
 
   // body
-  const bodyY1 = bodyTop + noseH, bodyY2 = bodyBot;
   g.appendChild(mk('rect', { x: cx - bodyW / 2, y: bodyY1, width: bodyW, height: bodyY2 - bodyY1, fill: 'url(#bodyG)' }));
-  // nose
+  // nose — the payload stack: lifts off at the fairing plane (0.32)
+  const stackA = mk('g', { class: 'stack' });
   const nose = mk('path', {
     d: `M ${cx - bodyW / 2} ${bodyY1} C ${cx - bodyW / 2} ${bodyY1 - noseH * 0.72} ${cx - 12} ${bodyTop} ${cx} ${bodyTop}
         C ${cx + 12} ${bodyTop} ${cx + bodyW / 2} ${bodyY1 - noseH * 0.72} ${cx + bodyW / 2} ${bodyY1} Z`,
     fill: 'url(#bodyG)',
   });
-  g.appendChild(nose);
-  g.appendChild(mk('circle', { cx, cy: bodyTop + 2, r: 3.4, fill: '#2b3344' }));
+  stackA.appendChild(nose);
+  stackA.appendChild(mk('circle', { cx, cy: bodyTop + 2, r: 3.4, fill: '#2b3344' }));
+  // the fairing seam sits on the body just under the nose
+  stackA.appendChild(mk('line', { x1: cx - bodyW / 2, y1: bodyY1, x2: cx + bodyW / 2, y2: bodyY1, stroke: '#3a4356', 'stroke-width': 1.5 }));
+  g.appendChild(stackA);
 
-  // engine section
+  // the second stage: a band of body between the two separation planes,
+  // lifted once the scrubber passes the interstage (0.72). Kept subtle so
+  // it reads as a stage, not a floating stripe.
+  const stackB = mk('g', { class: 'stack', opacity: 0 });
+  const s2Top = stageY(SEPS[0].yFrac);
+  const s2Bot = stageY(SEPS[1].yFrac);
+  stackB.appendChild(mk('rect', { x: cx - bodyW / 2, y: s2Top, width: bodyW, height: s2Bot - s2Top, fill: 'url(#bodyG)' }));
+  g.appendChild(stackB);
+
+  // engine section — stays with the booster
   const engY = bodyBot, engH = 26;
   g.appendChild(mk('rect', { x: cx - bodyW / 2 - 6, y: engY, width: bodyW + 12, height: engH, rx: 4, fill: 'url(#engG)' }));
   [0, 1, 2].forEach((i) => {
@@ -184,4 +210,71 @@ export function initAnatomy() {
   window.addEventListener('scroll', sync, { passive: true });
   window.addEventListener('resize', sync);
   sync();
+
+  /* ---------- stage-separation scrubber ----------
+     One value 0..1. The first half lifts the payload stack off the
+     booster at the fairing plane; the second half lifts the second
+     stage at the interstage. A smoothstep keeps the motion weighty
+     instead of linear. */
+  const sepEl = $('#anatomySep');
+  const sepFill = $('#anatomySepFill');
+  const sepHandle = $('#anatomySepHandle');
+  const sepHint = $('#anatomySepHint');
+  if (!sepEl) return;
+
+  const MAX_LIFT = 78; // svg units of maximum separation travel
+  let split = 0;
+
+  const smooth = (t) => t * t * (3 - 2 * t);
+
+  function applySplit() {
+    // t1 ramps 0..1 across the first half, t2 across the second
+    const t1 = smooth(Math.min(split * 2, 1));
+    const t2 = smooth(Math.max(split * 2 - 1, 0));
+    stackA.setAttribute('transform', `translate(0 ${-MAX_LIFT * t1})`);
+    stackB.setAttribute('transform', `translate(0 ${-MAX_LIFT * 0.62 * t2})`);
+    // the second-stage band only makes sense once it is separating
+    stackB.setAttribute('opacity', String(t2));
+    sepFill.style.width = (split * 100) + '%';
+    sepHandle.style.left = (split * 100) + '%';
+    sepEl.setAttribute('aria-valuenow', String(Math.round(split * 100)));
+    if (split > 0.04) sepHint.classList.add('gone');
+    else sepHint.classList.remove('gone');
+  }
+
+  function setFromEvent(ev) {
+    const r = sepEl.getBoundingClientRect();
+    split = Math.min(Math.max((ev.clientX - r.left) / r.width, 0), 1);
+    applySplit();
+  }
+
+  let dragging = false;
+  sepEl.addEventListener('pointerdown', (ev) => {
+    dragging = true;
+    // capture can legitimately be unavailable (re-entered pointer, or the
+    // browser already released it) — the drag still works off move events
+    try { sepEl.setPointerCapture(ev.pointerId); } catch (e) { /* no-op */ }
+    setFromEvent(ev);
+  });
+  sepEl.addEventListener('pointermove', (ev) => { if (dragging) setFromEvent(ev); });
+  const stop = () => { dragging = false; };
+  sepEl.addEventListener('pointerup', stop);
+  sepEl.addEventListener('pointercancel', stop);
+
+  // keyboard: arrows / home / end, since it is a real slider
+  sepEl.setAttribute('tabindex', '0');
+  sepEl.addEventListener('keydown', (ev) => {
+    const step = ev.shiftKey ? 0.1 : 0.02;
+    let next = split;
+    if (ev.key === 'ArrowLeft' || ev.key === 'ArrowDown') next = split - step;
+    else if (ev.key === 'ArrowRight' || ev.key === 'ArrowUp') next = split + step;
+    else if (ev.key === 'Home') next = 0;
+    else if (ev.key === 'End') next = 1;
+    else return;
+    ev.preventDefault();
+    split = Math.min(Math.max(next, 0), 1);
+    applySplit();
+  });
+
+  applySplit();
 }

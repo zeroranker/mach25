@@ -496,6 +496,47 @@ body.ready .hero__title .line:nth-child(3) .line__in{transition-delay:.2s}
 .apart__s b{display:block;color:var(--ink);font-size:15px;font-family:var(--ff-display);font-weight:600;margin-top:3px}
 @media (max-width:900px){ .anatomy{grid-template-columns:1fr} .anatomy__viz{position:static} }
 
+/* stage-separation scrubber */
+.sep{
+  position:relative;height:34px;margin:14px 4px 2px;cursor:ew-resize;
+  display:flex;align-items:center;touch-action:none;
+}
+.sep__track{
+  position:relative;flex:1;height:4px;border-radius:3px;
+  background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.13));
+  border:1px solid rgba(255,255,255,.05);
+}
+/* the two separation planes marked on the track */
+.sep__track::before,.sep__track::after{
+  content:"";position:absolute;top:-5px;width:1px;height:14px;background:var(--ink-3);opacity:.55;
+}
+.sep__track::before{left:50%}
+.sep__track::after{left:100%;opacity:0}
+.sep__fill{
+  position:absolute;left:0;top:0;bottom:0;width:0%;border-radius:3px;
+  background:linear-gradient(90deg,var(--heat),var(--heat-2));
+  box-shadow:0 0 12px -2px rgba(255,90,31,.7);
+}
+.sep__handle{
+  position:absolute;top:50%;left:0%;transform:translate(-50%,-50%);
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  background:#0d1220;border:1px solid var(--heat);color:var(--heat-2);
+  box-shadow:0 0 0 4px rgba(255,90,31,.14),0 6px 18px -6px rgba(0,0,0,.8);
+  transition:box-shadow .2s;
+}
+.sep__handle svg{width:13px;height:13px}
+.sep:hover .sep__handle,.sep:focus-visible .sep__handle{
+  box-shadow:0 0 0 6px rgba(255,90,31,.22),0 6px 18px -6px rgba(0,0,0,.8);
+}
+.sep:focus-visible{outline:none}
+.sep:focus-visible .sep__handle{border-color:#fff}
+.sep__handle svg path{stroke:currentColor}
+.sep__hint{
+  font-family:var(--ff-mono);font-size:8.5px;letter-spacing:.22em;color:var(--ink-3);
+  text-transform:uppercase;margin:6px 4px 0;transition:opacity .5s var(--ease);
+}
+.sep__hint.gone{opacity:0}
+
 /* ============================================================
    05 DATA
    ============================================================ */

@@ -183,6 +183,15 @@
     <div class="anatomy__viz">
       <svg id="anatomySvg" viewBox="0 0 420 760" aria-hidden="true"></svg>
       <div class="anatomy__labels" id="anatomyLabels"></div>
+      <div class="sep" id="anatomySep" role="slider"
+           aria-label="Stage separation scrubber" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+           aria-describedby="anatomySepHint">
+        <div class="sep__track"><div class="sep__fill" id="anatomySepFill"></div></div>
+        <div class="sep__handle" id="anatomySepHandle">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+      </div>
+      <div class="sep__hint" id="anatomySepHint">drag to separate the stages</div>
     </div>
     <div class="anatomy__text" id="anatomyText"></div>
   </div>
