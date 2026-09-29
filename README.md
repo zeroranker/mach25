@@ -83,7 +83,7 @@ Strategies used:
 
 ## Licence
 
-MIT — see `LICENSE`.
+No licence granted. All rights reserved — not for redistribution or reuse.
 
 ## Contact
 
