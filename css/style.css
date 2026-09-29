@@ -300,6 +300,40 @@ body.ready .hero__title .line:nth-child(3) .line__in{transition-delay:.2s}
    02 LINEAGE
    ============================================================ */
 .lineage{position:relative}
+
+/* launch-site dot map */
+.smap{
+  position:relative;margin:0 0 14px;border:1px solid var(--line);border-radius:var(--r-lg);
+  background:radial-gradient(120% 100% at 50% 0,#0a0f1b,#060912);
+  padding:14px 18px 10px;overflow:hidden;
+}
+.smap::before{
+  content:"LAUNCH SITES";position:absolute;top:10px;left:18px;
+  font-family:var(--ff-mono);font-size:8.5px;letter-spacing:.24em;color:var(--ink-3);
+}
+.smap__svg{display:block;width:100%;max-height:clamp(190px,22vh,300px);height:auto;color:#263042}
+.smap__grid line{stroke:rgba(120,140,180,.07);stroke-width:1}
+.smap__sites .smap__site{fill:var(--ice);transition:opacity .3s var(--ease)}
+.smap__sites .smap__site text{
+  fill:var(--ink-2);font-family:var(--ff-mono);font-size:9px;letter-spacing:.14em;
+  opacity:.75;paint-order:stroke;stroke:#060912;stroke-width:2.5px;
+}
+.smap__site--hot{fill:var(--heat-2)}
+.smap__ring{
+  fill:none;stroke:var(--heat);stroke-width:1;opacity:.5;
+  transform-box:fill-box;transform-origin:center;
+  animation:smapPing 2.6s ease-out infinite;
+}
+@keyframes smapPing{
+  0%{transform:scale(.55);opacity:.65}
+  70%{transform:scale(1.5);opacity:0}
+  100%{transform:scale(1.5);opacity:0}
+}
+.smap__site.is-up{fill:#fff}
+.smap__site.is-up text{opacity:1;fill:var(--ink)}
+.ev.is-up{border-color:var(--heat)!important;box-shadow:0 0 0 1px var(--heat),0 14px 40px -18px rgba(255,90,31,.6)}
+.ev.is-flash{animation:evFlash 1.6s ease-out}
+@keyframes evFlash{0%,40%{box-shadow:0 0 0 2px var(--heat),0 0 34px -6px rgba(255,90,31,.8)}100%{box-shadow:none}}
 .lineage__track{
   display:flex;gap:clamp(18px,2.4vw,34px);overflow-x:auto;overflow-y:hidden;
   padding:30px 4px 34px;scroll-snap-type:x mandatory;

@@ -1,0 +1,17 @@
+{
+  "name": "mach25",
+  "version": "1.0.0",
+  "description": "MACH 25 — a cinematic archive of the machines that escaped Earth",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "qa": "node qa/qa.mjs"
+  },
+  "dependencies": {
+    "three": "^0.181.0"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.43.1"
+  },
+  "license": "MIT"
+}

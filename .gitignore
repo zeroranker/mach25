@@ -1,0 +1,10 @@
+# dependencies — vendored into ./vendor so the live site has no
+# runtime dependency on node_modules (static hosts don't serve it)
+node_modules/
+
+# QA harness — browser probes used during build/verify cycles, not part of the site
+qa/
+
+# local runtime artifacts
+*.log
+.DS_Store

@@ -2,7 +2,7 @@
 
 **A cinematic archive of the machines that escaped Earth.**
 
-> Every liquid engine, every stage, every machine that crossed the Kármán line —
+> Every liquid engine, every stage, every machine that crossed the KÃ¡rmÃ¡n line â€”
 > rebuilt in true scale from real flight data. This is not a gallery.
 > It is an archive of escape velocity.
 
@@ -21,10 +21,10 @@ tracking, no analytics, no cookies.
 | Section | Contents |
 |---|---|
 | **01 Pulse** | Live launch telemetry strip + 8 state-of-launch statistics |
-| **02 Lineage** | 43 historical firsts on a drag-scrolled timeline, 11 era filters |
+| **02 Lineage** | 43 historical firsts on a drag-scrolled timeline, 11 era filters, and a dot map of the launch sites that cross-highlights the timeline |
 | **03 Fleet** | 21 launch vehicles as true-scale procedural 3D models, with side-by-side compare mode and a telemetry overlay |
 | **04 Anatomy** | A full orbital rocket dissected in scroll-synced SVG |
-| **05 Data** | 4 canvas charts on thrust, payload, cost-per-kg and the trade space — each with per-vehicle toggles |
+| **05 Data** | 4 canvas charts on thrust, payload, cost-per-kg and the trade space â€” each with per-vehicle toggles |
 | **06 Engines** | 17 rocket engines with real thrust, Isp, chamber pressure and year, fully sortable |
 | **07 Schedule** | Countdown to the next confirmed launch + a 17-mission manifest |
 | **08 Shock** | 21 numbers that don't compute |
@@ -37,12 +37,12 @@ McDowell's launch statistics. Raw research notes live in `data/`.
 
 Vehicles modelled include the V-2, R-7/Sputnik, Saturn V, Soyuz, Titan IIIE,
 Space Shuttle, Proton, Delta IV Heavy, Falcon 9, Electron, Starship, SLS,
-Ariane 5, Long March 5 and more — from Peenemünde 1942 to the present.
+Ariane 5, Long March 5 and more â€” from PeenemÃ¼nde 1942 to the present.
 
 ## Stack
 
 - **three.js r181** (vendored, MIT)
-- Vanilla ES modules — no React, no Vue, no build step
+- Vanilla ES modules â€” no React, no Vue, no build step
 - Canvas 2D for all data charts
 - SVG for the anatomy dissection
 - Google Fonts (Space Grotesk / Inter / JetBrains Mono / Anton), degrading
@@ -62,7 +62,7 @@ The repository includes `server.mjs`, a dependency-free Node static server
 with correct ES-module MIME types, if you'd rather not install anything:
 
 ```bash
-node server.mjs   # → http://127.0.0.1:4111/
+node server.mjs   # â†’ http://127.0.0.1:4111/
 ```
 
 > **Note:** `three` is resolved through an import map to
@@ -83,8 +83,9 @@ Strategies used:
 
 ## Licence
 
-No licence granted. All rights reserved — not for redistribution or reuse.
+No licence granted. All rights reserved â€” not for redistribution or reuse.
 
 ## Contact
 
 Built by **zeroranker**. Issues and contributions welcome.
+

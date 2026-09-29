@@ -1,0 +1,482 @@
+{
+  "asOf": "2026-09-27",
+  "launches": [
+    {
+      "date": "2026-09-28T12:15:00Z",
+      "windowConfirmed": false,
+      "rocket": "Starship-Super Heavy (Ship 41 + Booster 21)",
+      "vehicleIdGuess": "starship",
+      "mission": "Starship Flight 14",
+      "payload": "26 Starlink v3 satellites (first orbital deployment of v3)",
+      "launchSite": "Starbase OLP-2, Texas",
+      "agency": "SpaceX",
+      "crew": false,
+      "crewNames": [],
+      "destination": "LEO",
+      "notes": "Planned first ORBITAL Starship flight; NET Sep 28, delayed from Sep 15/18/22, pending FAA approval.",
+      "likelihood": "medium"
+    },
+    {
+      "date": "2026-10-01T15:10:00Z",
+      "windowConfirmed": true,
+      "rocket": "Falcon 9 Block 5 (B1101, 3rd flight)",
+      "vehicleIdGuess": "falcon-9",
+      "mission": "NASA's SpaceX Crew-13",
+      "payload": "Crew Dragon C-213 \"Grace\" (2nd flight), 4 crew",
+      "launchSite": "SLC-40, Cape Canaveral SFS, Florida",
+      "agency": "SpaceX / NASA",
+      "crew": true,
+      "crewNames": ["Jessica Watkins (NASA, commander)", "Luke Delaney (NASA, pilot)", "Joshua Kutryk (CSA)", "Sergey Teteryatnikov (Roscosmos)"],
+      "destination": "ISS (Expedition 75/76)",
+      "notes": "Delayed from Sep 12 by a Dragon oxidizer leak; crew arrived in Florida Sep 26; docking planned Oct 2.",
+      "likelihood": "high"
+    },
+    {
+      "date": "2026-10-01T18:18:00Z",
+      "windowConfirmed": false,
+      "rocket": "Falcon 9 Block 5",
+      "vehicleIdGuess": "falcon-9",
+      "mission": "Transporter-18",
+      "payload": "Dedicated sun-synchronous-orbit rideshare (multiple smallsats)",
+      "launchSite": "SLC-4E, Vandenberg SFB, California",
+      "agency": "SpaceX",
+      "crew": false,
+      "crewNames": [],
+      "destination": "SSO",
+      "notes": "SpaceX lists Oct 1, 11:18 PT; third SpaceX launch in ~24h (with Crew-13 and NROL-97).",
+      "likelihood": "medium"
+    },
+    {
+      "date": "2026-10-02T03:53:00Z",
+      "windowConfirmed": true,
+      "rocket": "Falcon Heavy (side boosters B1072-4, B1104-2)",
+      "vehicleIdGuess": "falcon-heavy",
+      "mission": "NROL-97",
+      "payload": "Classified NRO payload",
+      "launchSite": "LC-39A, Kennedy Space Center, Florida",
+      "agency": "SpaceX / NRO",
+      "crew": false,
+      "crewNames": [],
+      "destination": "Classified (likely LEO)",
+      "notes": "First NRO payload on Falcon Heavy; first NSSL Phase 3 Lane 2 mission; side boosters to LZ-1/LZ-2.",
+      "likelihood": "high"
+    },
+    {
+      "date": "2026-10-07",
+      "windowConfirmed": false,
+      "rocket": "Ariane 64",
+      "vehicleIdGuess": "ariane-64",
+      "mission": "Amazon Leo (LE-04)",
+      "payload": "Amazon Project Kuiper broadband satellites",
+      "launchSite": "ELA-4, Guiana Space Centre, French Guiana",
+      "agency": "Arianespace",
+      "crew": false,
+      "crewNames": [],
+      "destination": "LEO",
+      "notes": "NET Oct 7; one of several Kuiper-configured Ariane 6 flights on the manifest.",
+      "likelihood": "medium"
+    },
+    {
+      "date": "2026-10-10",
+      "windowConfirmed": false,
+      "rocket": "Falcon 9 Block 5 (B1082, 25th flight)",
+      "vehicleIdGuess": "falcon-9",
+      "mission": "Starlink 15-25",
+      "payload": "27 Starlink V2 Mini satellites",
+      "launchSite": "SLC-4E, Vandenberg SFB, California",
+      "agency": "SpaceX",
+      "crew": false,
+      "crewNames": [],
+      "destination": "LEO",
+      "notes": "Launch time TBD; delayed from Sep 30; droneship landing in the Pacific.",
+      "likelihood": "high"
+    },
+    {
+      "date": "2026-10-19T19:41:03Z",
+      "windowConfirmed": true,
+      "rocket": "H3-24L",
+      "vehicleIdGuess": "h3",
+      "mission": "Martian Moons eXploration (MMX)",
+      "payload": "MMX spacecraft (Phobos sample return; NASA/CNES/DLR/ESA support)",
+      "launchSite": "LA-Y2, Tanegashima Space Center, Japan",
+      "agency": "JAXA / Mitsubishi Heavy Industries",
+      "crew": false,
+      "crewNames": [],
+      "destination": "Mars (Phobos/Deimos)",
+      "notes": "Planetary launch window opens; samples to return ~FY2031.",
+      "likelihood": "high"
+    },
+    {
+      "date": "2026-10",
+      "windowConfirmed": false,
+      "rocket": "Falcon 9 Block 5",
+      "vehicleIdGuess": "falcon-9",
+      "mission": "CRS SpX-35",
+      "payload": "Cargo Dragon to ISS",
+      "launchSite": "SLC-40, Cape Canaveral SFS, Florida",
+      "agency": "SpaceX / NASA",
+      "crew": false,
+      "crewNames": [],
+      "destination": "ISS",
+      "notes": "NET October 2026; date/time TBD.",
+      "likelihood": "medium"
+    },
+    {
+      "date": "2026-10",
+      "windowConfirmed": false,
+      "rocket": "Electron",
+      "vehicleIdGuess": "electron",
+      "mission": "StriX Launch 12",
+      "payload": "StriX SAR satellite for Synspective",
+      "launchSite": "Launch Complex 1, Mahia, New Zealand",
+      "agency": "Rocket Lab",
+      "crew": false,
+      "crewNames": [],
+      "destination": "LEO",
+      "notes": "NET October 2026; 13th launch for Synspective.",
+      "likelihood": "medium"
+    },
+    {
+      "date": "2026-10",
+      "windowConfirmed": false,
+      "rocket": "Falcon 9 Block 5",
+      "vehicleIdGuess": "falcon-9",
+      "mission": "Bandwagon-5",
+      "payload": "Dedicated mid-inclination rideshare",
+      "launchSite": "SLC-40, Cape Canaveral SFS, Florida",
+      "agency": "SpaceX",
+      "crew": false,
+      "crewNames": [],
+      "destination": "LEO (mid-inclination)",
+      "notes": "NET October 2026; date/time TBD.",
+      "likelihood": "medium"
+    },
+    {
+      "date": "2026-11-19",
+      "windowConfirmed": false,
+      "rocket": "Soyuz 2.1a / Fregat-M",
+      "vehicleIdGuess": "soyuz-2",
+      "mission": "MKA Kinosputnik, KOEN and others",
+      "payload": "Russian small satellites / Earth-observation cluster",
+      "launchSite": "Site 1S, Vostochny Cosmodrome, Russia",
+      "agency": "Roscosmos",
+      "crew": false,
+      "crewNames": [],
+      "destination": "LEO",
+      "notes": "NET Nov 19, 2026.",
+      "likelihood": "medium"
+    },
+    {
+      "date": "2026-11-24T05:03:00Z",
+      "windowConfirmed": true,
+      "rocket": "Soyuz 2.1b",
+      "vehicleIdGuess": "soyuz-2",
+      "mission": "Progress MS-36 (ISS resupply)",
+      "payload": "Cargo to ISS",
+      "launchSite": "Site 31/6, Baikonur Cosmodrome, Kazakhstan",
+      "agency": "Roscosmos",
+      "crew": false,
+      "crewNames": [],
+      "destination": "ISS",
+      "notes": "Routine ISS cargo flight with a published time.",
+      "likelihood": "high"
+    },
+    {
+      "date": "2026-11",
+      "windowConfirmed": false,
+      "rocket": "Ariane 62",
+      "vehicleIdGuess": "ariane-62",
+      "mission": "MetOp-SG B1",
+      "payload": "Second MetOp Second Generation weather satellite (microwave imagers/radars)",
+      "launchSite": "ELA-4, Guiana Space Centre, French Guiana",
+      "agency": "Arianespace / ESA / EUMETSAT",
+      "crew": false,
+      "crewNames": [],
+      "destination": "LEO (polar)",
+      "notes": "NET November 2026.",
+      "likelihood": "medium"
+    },
+    {
+      "date": "2026-11",
+      "windowConfirmed": false,
+      "rocket": "Falcon Heavy",
+      "vehicleIdGuess": "falcon-heavy",
+      "mission": "Griffin Mission One",
+      "payload": "Intuitive Machines Griffin lunar lander (NASA CLPS)",
+      "launchSite": "LC-39A, Kennedy Space Center, Florida",
+      "agency": "SpaceX / Intuitive Machines / NASA",
+      "crew": false,
+      "crewNames": [],
+      "destination": "Moon (lunar south pole region)",
+      "notes": "NET November 2026; CLPS lunar delivery, historically slip-prone.",
+      "likelihood": "low"
+    },
+    {
+      "date": "2026-12",
+      "windowConfirmed": false,
+      "rocket": "Proton-M / Briz-M",
+      "vehicleIdGuess": "proton-m",
+      "mission": "Ekspress-AMU4",
+      "payload": "Russian communications satellite",
+      "launchSite": "Site 200/39, Baikonur Cosmodrome, Kazakhstan",
+      "agency": "Roscosmos",
+      "crew": false,
+      "crewNames": [],
+      "destination": "GEO",
+      "notes": "NET December 2026.",
+      "likelihood": "medium"
+    },
+    {
+      "date": "2026-12",
+      "windowConfirmed": false,
+      "rocket": "Falcon 9 Block 5",
+      "vehicleIdGuess": "falcon-9",
+      "mission": "CRS NG-25",
+      "payload": "Cygnus cargo spacecraft to ISS",
+      "launchSite": "SLC-40, Cape Canaveral SFS, Florida",
+      "agency": "SpaceX / Northrop Grumman / NASA",
+      "crew": false,
+      "crewNames": [],
+      "destination": "ISS",
+      "notes": "NET December 2026.",
+      "likelihood": "medium"
+    }
+  ],
+  "stats": [
+    {
+      "id": "launches-2025",
+      "value": 329,
+      "unit": "attempts",
+      "label": "Global orbital launch attempts in 2025 (record year)",
+      "range": "324-329 depending on tracker (McDowell 329; BryceTech 325; SpaceNews 324)",
+      "source": "https://planet4589.org/space/papers/space25.1.2.pdf"
+    },
+    {
+      "id": "launches-2025-reached-orbit",
+      "value": 321,
+      "unit": "launches",
+      "label": "2025 launches reaching orbit/marginal orbit (McDowell)",
+      "source": "https://planet4589.org/space/stats/launches.html"
+    },
+    {
+      "id": "launches-2026-ytd",
+      "value": 227,
+      "unit": "attempts",
+      "label": "Global orbital launch attempts in 2026 (year-to-date, live counter as of 2026-09-27)",
+      "range": "211-227 depending on cutoff (Wikipedia: 212 as of Sep 6; RussianSpaceWeb: 211 as of Sep 2)",
+      "source": "https://planet4589.org/space/stats/launches.html"
+    },
+    {
+      "id": "launches-2025-by-country",
+      "value": 181,
+      "unit": "attempts",
+      "label": "Most orbital attempts by one country in a year: USA, 2025 (China was 2nd)",
+      "source": "https://planet4589.org/space/stats/launches.html"
+    },
+    {
+      "id": "most-launches-single-rocket-year",
+      "value": 165,
+      "unit": "launches",
+      "label": "Most launches by a single rocket in one year: Falcon 9, 2025 (a record; ~51% of global launches)",
+      "source": "https://aviationweek.com/space/launch-vehicles-propulsion/spaceops-global-orbital-launch-rate-jumped-25-2025"
+    },
+    {
+      "id": "falcon9-total-alltime",
+      "value": 690,
+      "unit": "launches",
+      "label": "Falcon 9 total launches to date (as of 2026-09-26); Falcon family incl. Falcon Heavy = 703",
+      "source": "https://en.wikipedia.org/wiki/Template:Falcon_rocket_statistics"
+    },
+    {
+      "id": "soyuz-total-alltime",
+      "value": 1150,
+      "unit": "launches",
+      "label": "Soyuz family total launches (sum of variants) - the most-launched rocket family in history",
+      "range": "~1,150; table mixes as-of dates for active vs retired variants",
+      "source": "https://en.wikipedia.org/wiki/Soyuz_(rocket_family)"
+    },
+    {
+      "id": "soyuz-u-single-rocket-record",
+      "value": 786,
+      "unit": "launches",
+      "label": "Most launches by a single rocket variant: Soyuz-U (1973-2017), most launched carrier rocket ever built",
+      "source": "https://en.wikipedia.org/wiki/Soyuz_(rocket_family)"
+    },
+    {
+      "id": "longmarch-total-alltime",
+      "value": 600,
+      "unit": "launches",
+      "label": "Long March family total launches ('more than 600'; third most among active rocket families)",
+      "range": "600+",
+      "source": "https://en.wikipedia.org/wiki/Long_March_(rocket_family)"
+    },
+    {
+      "id": "active-satellites",
+      "value": 16000,
+      "unit": "satellites",
+      "label": "Functioning/active satellites in Earth orbit (ESA, updated 2026-07-31)",
+      "range": "~16,000-16,500 (azmth/CelesTrak counted 16,511 active on 2026-09-06)",
+      "source": "https://aerospaceglobalnews.com/news/how-many-satellites-orbiting-earth-2026"
+    },
+    {
+      "id": "tracked-objects",
+      "value": 46450,
+      "unit": "objects",
+      "label": "Objects regularly tracked in Earth orbit (dead satellites, rocket bodies, debris), ESA 2026",
+      "source": "https://aerospaceglobalnews.com/news/how-many-satellites-orbiting-earth-2026"
+    },
+    {
+      "id": "starlink-constellation",
+      "value": 11154,
+      "unit": "satellites",
+      "label": "Starlink satellites in orbit (2026-09-21); 11,139 working; 12,962 launched total",
+      "source": "https://keeptrack.space/x-report/spacex-brief-2026-09-21"
+    },
+    {
+      "id": "humans-in-space-now",
+      "value": 10,
+      "unit": "people",
+      "label": "Humans in space on 2026-09-27: 7 on ISS (Expedition 75: Crew-12 + Soyuz MS-29) + 3 on Tiangong (Shenzhou 23)",
+      "source": "https://en.wikipedia.org/wiki/Expedition_75"
+    },
+    {
+      "id": "record-most-humans-in-space",
+      "value": 19,
+      "unit": "people",
+      "label": "Record for most humans simultaneously in orbit, set Sept 2024 (Polaris Dawn 4 + ISS 9 + Soyuz MS-26 3 + Tiangong 3)",
+      "source": "https://en.wikipedia.org/wiki/Polaris_Dawn"
+    },
+    {
+      "id": "total-humans-flown",
+      "value": 781,
+      "unit": "people",
+      "label": "Total humans who have flown in space (as of April 2026); 290+ have visited the ISS, 105 visited Mir",
+      "source": "https://en.wikipedia.org/wiki/Astronaut"
+    },
+    {
+      "id": "fastest-departure-speed",
+      "value": 16.26,
+      "unit": "km/s (58,536 km/h)",
+      "label": "Fastest rocket-launched spacecraft departure: New Horizons, Atlas V 551, 2006-01-19 (fastest object ever launched from Earth, heliocentric speed)",
+      "source": "https://en.wikipedia.org/wiki/New_Horizons"
+    },
+    {
+      "id": "fastest-crewed-reentry",
+      "value": 39897,
+      "unit": "km/h (11.08 km/s)",
+      "label": "Fastest speed relative to Earth ever attained by humans: Apollo 10 crew, atmospheric entry interface, 1969-05-26",
+      "source": "https://en.wikipedia.org/wiki/List_of_spaceflight_records"
+    },
+    {
+      "id": "fastest-spacecraft-overall",
+      "value": 191.7,
+      "unit": "km/s",
+      "label": "Fastest spacecraft relative to the Sun: Parker Solar Probe (reached Dec 2024)",
+      "source": "https://en.wikipedia.org/wiki/List_of_spaceflight_records"
+    },
+    {
+      "id": "most-powerful-rocket-thrust",
+      "value": 89.5,
+      "unit": "MN",
+      "label": "Most powerful rocket ever flown by thrust: Starship Super Heavy (33 Raptor engines, 89.5 MN); Saturn V was 34.5 MN (7.5M lbf)",
+      "source": "https://en.wikipedia.org/wiki/SpaceX_Starship"
+    },
+    {
+      "id": "saturn-v-thrust",
+      "value": 34.5,
+      "unit": "MN",
+      "label": "Saturn V first-stage thrust (5x F-1, 7.5 million lbf sea level); 4th most powerful rocket ever flown, 2nd most powerful to carry humans (SLS: 39 MN)",
+      "source": "https://en.wikipedia.org/wiki/Saturn_V"
+    },
+    {
+      "id": "largest-single-payload-orbit",
+      "value": 140000,
+      "unit": "kg",
+      "label": "Largest payload capacity to LEO: Saturn V, 140 t (incl. S-IVB + TLI propellant); record still stands as of 2026",
+      "source": "https://en.wikipedia.org/wiki/Saturn_V"
+    },
+    {
+      "id": "longest-human-presence",
+      "value": "2000-11-02",
+      "unit": "date",
+      "label": "Longest continuous human presence in space: ISS occupied continuously since 2 Nov 2000 (~25 years 10.5 months as of 2026-09-27)",
+      "source": "https://en.wikipedia.org/wiki/Human_spaceflight"
+    },
+    {
+      "id": "booster-reuse-record",
+      "value": 37,
+      "unit": "flights",
+      "label": "Record Falcon 9 booster reuse: 37 flights by B1067 (as of 2026-09-26); 55 boosters have flown multiple missions",
+      "source": "https://en.wikipedia.org/wiki/Template:Falcon_rocket_statistics"
+    },
+    {
+      "id": "falcon-700th",
+      "value": 700,
+      "unit": "rockets",
+      "label": "SpaceX's 700th Falcon-family rocket launched on 2026-09-13 (final 3 O3b mPOWER satellites for SES)",
+      "source": "https://spaceflightnow.com/2026/09/13/live-coverage-spacex-to-launch-final-3-o3b-mpower-satellites-for-ses/"
+    },
+    {
+      "id": "space-tourism-price-suborbital",
+      "value": 250000,
+      "unit": "USD",
+      "label": "Virgin Galactic suborbital ticket (raised from $200,000); 700+ sold before the 2014 accident. Blue Origin's price is undisclosed.",
+      "range": "Virgin Galactic $200k-450k historically; Blue Origin undisclosed (~$28M reported)",
+      "source": "https://en.wikipedia.org/wiki/Space_tourism"
+    },
+    {
+      "id": "space-tourism-price-orbital",
+      "value": 50000000,
+      "unit": "USD",
+      "label": "NASA commercial ISS visit: ~$50M for transport + $35,000/day on station; early Soyuz orbital tourists paid $20-25M",
+      "source": "https://en.wikipedia.org/wiki/Space_tourism"
+    },
+    {
+      "id": "farthest-humans",
+      "value": 406700,
+      "unit": "km (252,756 mi)",
+      "label": "Farthest humans have traveled from Earth: Artemis II crew, 2026-04-06 (new record, beating Apollo 13)",
+      "source": "https://en.wikipedia.org/wiki/Human_spaceflight"
+    },
+    {
+      "id": "most-time-in-space",
+      "value": 1110,
+      "unit": "days",
+      "label": "Most cumulative time in space: Oleg Kononenko (1,110d 14h 57m); longest single flight: Valeri Polyakov, 437d (1994-95)",
+      "source": "https://en.wikipedia.org/wiki/Human_spaceflight"
+    }
+  ],
+  "sources": [
+    "https://spaceflightnow.com/launch-schedule/",
+    "https://www.spacex.com/launches",
+    "https://api.nextspaceflight.com/launches/",
+    "https://spaceflightnow.com/2026/09/26/next-crew-bound-for-the-space-station-arrive-in-florida/",
+    "https://spaceflightnow.com/2026/09/13/live-coverage-spacex-to-launch-final-3-o3b-mpower-satellites-for-ses/",
+    "https://en.wikipedia.org/wiki/List_of_spaceflight_launches_in_October%E2%80%93December_2026",
+    "https://en.wikipedia.org/wiki/2026_in_spaceflight",
+    "https://russianspaceweb.com/2026.html",
+    "https://planet4589.org/space/stats/launches.html",
+    "https://planet4589.org/space/papers/space25.1.2.pdf",
+    "https://www.uvrn.org/research/global-orbital-launches-record-2025-trackers-split-on-total",
+    "https://aviationweek.com/space/launch-vehicles-propulsion/spaceops-global-orbital-launch-rate-jumped-25-2025",
+    "https://en.wikipedia.org/wiki/Template:Falcon_rocket_statistics",
+    "https://en.wikipedia.org/wiki/List_of_Falcon_9_and_Falcon_Heavy_launches",
+    "https://en.wikipedia.org/wiki/Soyuz_(rocket_family)",
+    "https://en.wikipedia.org/wiki/Long_March_(rocket_family)",
+    "https://aerospaceglobalnews.com/news/how-many-satellites-orbiting-earth-2026",
+    "https://keeptrack.space/x-report/spacex-brief-2026-09-21",
+    "https://azmth.space/data",
+    "https://www.space.com/spacex-starlink-satellites.html",
+    "https://en.wikipedia.org/wiki/Expedition_75",
+    "https://en.wikipedia.org/wiki/Tiangong_space_station",
+    "https://en.wikipedia.org/wiki/Polaris_Dawn",
+    "https://en.wikipedia.org/wiki/Astronaut",
+    "https://en.wikipedia.org/wiki/List_of_spaceflight_records",
+    "https://en.wikipedia.org/wiki/New_Horizons",
+    "https://en.wikipedia.org/wiki/SpaceX_Starship",
+    "https://en.wikipedia.org/wiki/Saturn_V",
+    "https://en.wikipedia.org/wiki/Human_spaceflight",
+    "https://en.wikipedia.org/wiki/Space_tourism"
+  ],
+  "caveats": "Research date 2026-09-27. PART A: 16 entries returned (target ~14). Only the near-term launches (Starship Flight 14, Crew-13, NROL-97, Starlink 15-25, MMX) have firm published times; everything from ~Oct 7 onward is 'NET' (no earlier than) or month-only and subject to slip - dates/times beyond ~Oct 10 are planning dates, not confirmed windows. Two manifest inconsistencies were resolved in favour of the more current source: (a) an older cached NextSpaceflight view showed Starship Flight 14 as Sep 18, but Spaceflight Now and SpaceX.com (updated late Sep) both show NET Sep 28; (b) an older cached SpaceX page listed Crew-13/Transporter-18 in a different order - SpaceX's live page shows Transporter-18 at Oct 1 11:18 PT and NROL-97 at Oct 1 23:53 ET (= Oct 2 03:53 UTC). Crew-13 agency attribution follows Spaceflight Now, which lists Joshua Kutryk as CSA. Chinese Long March and Russian manifests beyond Progress MS-36 are largely unreleased publicly, so the Q4 list skews heavily toward US launches; many additional Starlink/national-security Falcon 9 flights will fill the gaps but are not yet dated. PART B: 2025 and 2026 launch totals differ by tracker because of definitional choices (McDowell counts 3 near-orbital Starship flights; SpaceNews excludes them) - ranges given. The 2026 YTD figure (227) is a live counter and is already out of date. Soyuz family total (~1,150) is a sum of a variant table whose active-variant counts are only partially updated. Cumulative humans-flown (781) is as of April 2026 and counts suborbital fliers; definitions of the space border (FAI 100 km vs US 80 km) shift this number. Space-tourism pricing is opaque: Blue Origin has never published a price, and Virgin Galactic's headline price predates its post-2024 pause; figures given are the best documented. Note the two search tools available (Parallel Search MCP and DeepSeek web_search) were rate-limited/key-less during this session, so most data was gathered via direct fetches of the authoritative pages listed above."
+}

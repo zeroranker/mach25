@@ -10,6 +10,7 @@ import { initHero } from './scene.js';
 import { initFleet } from './rocket3d.js';
 import { ChartStage, makeChartDefs } from './charts.js';
 import { initAnatomy } from './anatomy.js';
+import { renderSiteMap } from './sitemap.js';
 import * as UI from './ui.js';
 
 const BOOT_LINES = [
@@ -269,6 +270,7 @@ function renderAll() {
   UI.renderPulse(DATA.stats, DATA.meta?.pulseFoot);
   UI.renderPulseLive(DATA.stats, DATA.launches);
   UI.renderLineage(DATA.events);
+  renderSiteMap(DATA.events);
   UI.renderEngines(DATA.engines);
   UI.renderLaunches(DATA.launches, DATA.meta?.launchNote);
   UI.renderShock(DATA.facts);
