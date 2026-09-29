@@ -120,15 +120,21 @@ export function initAnatomy() {
   stackA.appendChild(mk('line', { x1: cx - bodyW / 2, y1: interstage, x2: cx + bodyW / 2, y2: interstage, stroke: '#3a4356', 'stroke-width': 1.5 }));
 
   /* ---- the payload: hidden inside the fairing, revealed only once the
-       halves fall open. A small satellite — bus, solar wings, dish. ---- */
+       halves fall open. A small satellite — bus, solar wings, dish.
+       Centred in the fairing cavity with clearance for the wings, so it
+       reads as sitting inside the shell rather than poking through it. ---- */
   const payload = mk('g', { class: 'payload', opacity: 0 });
-  const plY = fairingSeam - 6;
+  const fairMid = (bodyTop + fairingSeam) / 2;       // cavity centre
+  const plY = fairMid + 30;                           // bus base, clear of the seam
+  // wings must clear the centre bus and stay inside the fairing cavity
+  const wingHalf = Math.min(13 + bodyW * 0.5 - 4, bodyW * 0.5 - 2) - 13;
   payload.appendChild(mk('rect', { x: cx - 13, y: plY - 40, width: 26, height: 40, rx: 3, fill: '#2b3344', stroke: '#5fe3ff', 'stroke-width': 0.8 }));
-  payload.appendChild(mk('rect', { x: cx - 46, y: plY - 31, width: 33, height: 17, rx: 2, fill: '#232a3a', stroke: '#5fe3ff', 'stroke-width': 0.6 }));
-  payload.appendChild(mk('rect', { x: cx + 13, y: plY - 31, width: 33, height: 17, rx: 2, fill: '#232a3a', stroke: '#5fe3ff', 'stroke-width': 0.6 }));
+  payload.appendChild(mk('rect', { x: cx - 13 - wingHalf, y: plY - 31, width: wingHalf, height: 17, rx: 2, fill: '#232a3a', stroke: '#5fe3ff', 'stroke-width': 0.6 }));
+  payload.appendChild(mk('rect', { x: cx + 13, y: plY - 31, width: wingHalf, height: 17, rx: 2, fill: '#232a3a', stroke: '#5fe3ff', 'stroke-width': 0.6 }));
   for (let i = 1; i < 4; i++) {
-    payload.appendChild(mk('line', { x1: cx - 46 + i * 8, y1: plY - 31, x2: cx - 46 + i * 8, y2: plY - 14, stroke: 'rgba(95,227,255,.3)', 'stroke-width': 0.6 }));
-    payload.appendChild(mk('line', { x1: cx + 13 + i * 8, y1: plY - 31, x2: cx + 13 + i * 8, y2: plY - 14, stroke: 'rgba(95,227,255,.3)', 'stroke-width': 0.6 }));
+    const gx = wingHalf / 4;
+    payload.appendChild(mk('line', { x1: cx - 13 - wingHalf + i * gx, y1: plY - 31, x2: cx - 13 - wingHalf + i * gx, y2: plY - 14, stroke: 'rgba(95,227,255,.3)', 'stroke-width': 0.6 }));
+    payload.appendChild(mk('line', { x1: cx + 13 + i * gx, y1: plY - 31, x2: cx + 13 + i * gx, y2: plY - 14, stroke: 'rgba(95,227,255,.3)', 'stroke-width': 0.6 }));
   }
   payload.appendChild(mk('circle', { cx, cy: plY - 34, r: 4.5, fill: 'none', stroke: '#5fe3ff', 'stroke-width': 0.9 }));
   stackA.appendChild(payload);

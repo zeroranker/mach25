@@ -142,6 +142,16 @@ export function renderSiteMap(events, opts = {}) {
     dot.setAttribute('r', big ? 4 : 2.6);
     grp.appendChild(dot);
 
+    // an invisible hit target: at the rendered scale the dots are only
+    // ~2px, which is impossible to land a pointer on. This makes the whole
+    // group reliably hoverable/clickable without drawing anything new.
+    const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    hit.setAttribute('cx', x); hit.setAttribute('cy', y);
+    hit.setAttribute('r', 12);
+    hit.setAttribute('fill', 'transparent');
+    hit.setAttribute('class', 'smap__hit');
+    grp.appendChild(hit);
+
     if (big && s.label) {
       const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       t.setAttribute('x', x + 12); t.setAttribute('y', y + 3.5);
@@ -192,8 +202,7 @@ export function renderSiteMap(events, opts = {}) {
   markers.forEach(({ grp, site }) => {
     grp.addEventListener('mouseenter', () => { hovered = site; raiseCard(site, true); apply(); });
     grp.addEventListener('mouseleave', () => { hovered = null; raiseCard(site, false); apply(); });
-    grp.addEventListener('click', () => {
-      // scroll the timeline to the first event at this site
+    grp.addEventListener('click', () => {      // scroll the timeline to the first event at this site
       const ev = site.events[0];
       const card = cards().find((c) => c.querySelector('.ev__title')?.textContent === ev.title);
       if (card) {
