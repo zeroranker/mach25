@@ -89,48 +89,77 @@ export function initAnatomy() {
   // body bounds — declared before stageY, which is called immediately below
   const bodyY1 = bodyTop + noseH, bodyY2 = bodyBot;
 
-  /* Separation planes (fraction of body height, from the top):
-       fairing line ~0.32  → everything above = nose + fairing (payload)
-       interstage  ~0.72   → everything above = second stage
-     Dragging the scrubber lifts the upper stacks off the booster. Each
-     plane is a real disconnect on the vehicle, so the split is honest. */
+  /* Separation — modelled on the real sequence:
+       fairing jettison: the two fairing halves split along the vertical
+         seam and hinge outward + fall away, exposing the payload inside.
+       stage separation: the upper stage lifts off the booster at the
+         interstage plane.
+     Both are what the vehicle actually does in flight. */
   const SEPS = [
     { yFrac: 0.32, label: 'PAYLOAD FAIRING JETTISON' },
     { yFrac: 0.72, label: 'STAGE SEPARATION' },
   ];
   const stageY = (f) => bodyY1 + (bodyY2 - bodyY1) * f;
+  const fairingSeam = stageY(SEPS[0].yFrac);
+  const interstage = stageY(SEPS[1].yFrac);
 
   // engine glow under the vehicle
   g.appendChild(mk('ellipse', { cx, cy: bodyBot + 34, rx: 70, ry: 30, fill: 'url(#glowG)' }));
 
-  // interstage lines (the visible separation seams)
-  SEPS.forEach((s) => {
-    g.appendChild(mk('line', { x1: cx - bodyW / 2, y1: stageY(s.yFrac), x2: cx + bodyW / 2, y2: stageY(s.yFrac), stroke: '#3a4356', 'stroke-width': 1.5 }));
-  });
+  // body — the booster, from the interstage down
+  g.appendChild(mk('rect', { x: cx - bodyW / 2, y: interstage, width: bodyW, height: bodyY2 - interstage, fill: 'url(#bodyG)' }));
 
-  // body
-  g.appendChild(mk('rect', { x: cx - bodyW / 2, y: bodyY1, width: bodyW, height: bodyY2 - bodyY1, fill: 'url(#bodyG)' }));
-  // nose — the payload stack: lifts off at the fairing plane (0.32)
+  /* ---- the upper stage: a real stage from the interstage up to the
+       fairing seam. It carries the fairing and payload, so separating it
+       lifts the whole upper assembly off the booster. ---- */
   const stackA = mk('g', { class: 'stack' });
-  const nose = mk('path', {
-    d: `M ${cx - bodyW / 2} ${bodyY1} C ${cx - bodyW / 2} ${bodyY1 - noseH * 0.72} ${cx - 12} ${bodyTop} ${cx} ${bodyTop}
-        C ${cx + 12} ${bodyTop} ${cx + bodyW / 2} ${bodyY1 - noseH * 0.72} ${cx + bodyW / 2} ${bodyY1} Z`,
-    fill: 'url(#bodyG)',
-  });
-  stackA.appendChild(nose);
-  stackA.appendChild(mk('circle', { cx, cy: bodyTop + 2, r: 3.4, fill: '#2b3344' }));
-  // the fairing seam sits on the body just under the nose
-  stackA.appendChild(mk('line', { x1: cx - bodyW / 2, y1: bodyY1, x2: cx + bodyW / 2, y2: bodyY1, stroke: '#3a4356', 'stroke-width': 1.5 }));
-  g.appendChild(stackA);
 
-  // the second stage: a band of body between the two separation planes,
-  // lifted once the scrubber passes the interstage (0.72). Kept subtle so
-  // it reads as a stage, not a floating stripe.
-  const stackB = mk('g', { class: 'stack', opacity: 0 });
-  const s2Top = stageY(SEPS[0].yFrac);
-  const s2Bot = stageY(SEPS[1].yFrac);
-  stackB.appendChild(mk('rect', { x: cx - bodyW / 2, y: s2Top, width: bodyW, height: s2Bot - s2Top, fill: 'url(#bodyG)' }));
-  g.appendChild(stackB);
+  // stage skin
+  stackA.appendChild(mk('rect', { x: cx - bodyW / 2, y: fairingSeam, width: bodyW, height: interstage - fairingSeam, fill: 'url(#bodyG)' }));
+  // interstage seam, sitting on top of the booster
+  stackA.appendChild(mk('line', { x1: cx - bodyW / 2, y1: interstage, x2: cx + bodyW / 2, y2: interstage, stroke: '#3a4356', 'stroke-width': 1.5 }));
+
+  /* ---- the payload: hidden inside the fairing, revealed only once the
+       halves fall open. A small satellite — bus, solar wings, dish. ---- */
+  const payload = mk('g', { class: 'payload', opacity: 0 });
+  const plY = fairingSeam - 6;
+  payload.appendChild(mk('rect', { x: cx - 13, y: plY - 40, width: 26, height: 40, rx: 3, fill: '#2b3344', stroke: '#5fe3ff', 'stroke-width': 0.8 }));
+  payload.appendChild(mk('rect', { x: cx - 46, y: plY - 31, width: 33, height: 17, rx: 2, fill: '#232a3a', stroke: '#5fe3ff', 'stroke-width': 0.6 }));
+  payload.appendChild(mk('rect', { x: cx + 13, y: plY - 31, width: 33, height: 17, rx: 2, fill: '#232a3a', stroke: '#5fe3ff', 'stroke-width': 0.6 }));
+  for (let i = 1; i < 4; i++) {
+    payload.appendChild(mk('line', { x1: cx - 46 + i * 8, y1: plY - 31, x2: cx - 46 + i * 8, y2: plY - 14, stroke: 'rgba(95,227,255,.3)', 'stroke-width': 0.6 }));
+    payload.appendChild(mk('line', { x1: cx + 13 + i * 8, y1: plY - 31, x2: cx + 13 + i * 8, y2: plY - 14, stroke: 'rgba(95,227,255,.3)', 'stroke-width': 0.6 }));
+  }
+  payload.appendChild(mk('circle', { cx, cy: plY - 34, r: 4.5, fill: 'none', stroke: '#5fe3ff', 'stroke-width': 0.9 }));
+  stackA.appendChild(payload);
+
+  /* ---- the fairing: two halves split along the vertical centre seam,
+       hinged at the base so they swing open and fall away. ---- */
+  const makeFairingHalf = (side) => {
+    const half = mk('g', { class: 'fairing-half' });
+    const hingeX = cx + side * (bodyW / 2);
+    const halfW = bodyW / 2;
+    const x0 = side < 0 ? cx - halfW : cx;
+    const d = `M ${x0} ${fairingSeam}
+               C ${x0} ${fairingSeam - noseH * 0.78} ${cx + side * 12} ${bodyTop} ${cx} ${bodyTop}
+               L ${cx} ${fairingSeam} Z`;
+    half.appendChild(mk('path', { d, fill: 'url(#bodyG)' }));
+    // a subtle panel split so the two halves read as separate shells
+    half.appendChild(mk('line', {
+      x1: cx + side * (halfW * 0.42), y1: fairingSeam - 4,
+      x2: cx + side * (halfW * 0.16), y2: bodyTop + noseH * 0.34,
+      stroke: 'rgba(0,0,0,.3)', 'stroke-width': 1,
+    }));
+    half.dataset.hingeX = String(hingeX);
+    half.dataset.side = String(side);
+    return half;
+  };
+  const fairL = makeFairingHalf(-1);
+  const fairR = makeFairingHalf(1);
+  stackA.appendChild(fairL);
+  stackA.appendChild(fairR);
+
+  g.appendChild(stackA);
 
   // engine section — stays with the booster
   const engY = bodyBot, engH = 26;
@@ -212,29 +241,46 @@ export function initAnatomy() {
   sync();
 
   /* ---------- stage-separation scrubber ----------
-     One value 0..1. The first half lifts the payload stack off the
-     booster at the fairing plane; the second half lifts the second
-     stage at the interstage. A smoothstep keeps the motion weighty
-     instead of linear. */
+     One value 0..1, driven as the real flight sequence:
+       first half  → fairing jettison: the two halves hinge outward and
+                     fall away, revealing the payload inside
+       second half → stage separation: the upper stage lifts off the
+                     booster at the interstage
+     A smoothstep keeps the motion weighty instead of linear. */
   const sepEl = $('#anatomySep');
   const sepFill = $('#anatomySepFill');
   const sepHandle = $('#anatomySepHandle');
   const sepHint = $('#anatomySepHint');
   if (!sepEl) return;
 
-  const MAX_LIFT = 78; // svg units of maximum separation travel
+  const MAX_LIFT = 84;  // svg units the upper stage rises
+  const HALF_SWING = 34; // degrees each fairing half opens
+  const HALF_DROP = 46;  // how far the spent halves fall before fading
   let split = 0;
 
   const smooth = (t) => t * t * (3 - 2 * t);
 
   function applySplit() {
-    // t1 ramps 0..1 across the first half, t2 across the second
-    const t1 = smooth(Math.min(split * 2, 1));
-    const t2 = smooth(Math.max(split * 2 - 1, 0));
-    stackA.setAttribute('transform', `translate(0 ${-MAX_LIFT * t1})`);
-    stackB.setAttribute('transform', `translate(0 ${-MAX_LIFT * 0.62 * t2})`);
-    // the second-stage band only makes sense once it is separating
-    stackB.setAttribute('opacity', String(t2));
+    const t1 = smooth(Math.min(split * 2, 1));   // fairing jettison
+    const t2 = smooth(Math.max(split * 2 - 1, 0)); // stage separation
+
+    // the upper stage lifts off the booster
+    stackA.setAttribute('transform', `translate(0 ${-MAX_LIFT * t2})`);
+
+    // fairing halves hinge outward at the seam, then drop away and fade
+    [fairL, fairR].forEach((half) => {
+      const side = +half.dataset.side;
+      const hx = +half.dataset.hingeX;
+      const swing = side * HALF_SWING * t1;
+      const drop = HALF_DROP * t1;
+      half.setAttribute('transform',
+        `translate(${side * HALF_DROP * 0.55 * t1} ${drop}) rotate(${swing} ${hx} ${fairingSeam})`);
+      half.setAttribute('opacity', String(Math.max(1 - t1 * 1.25, 0)));
+    });
+
+    // the payload is hidden until the fairing opens
+    payload.setAttribute('opacity', String(t1));
+
     sepFill.style.width = (split * 100) + '%';
     sepHandle.style.left = (split * 100) + '%';
     sepEl.setAttribute('aria-valuenow', String(Math.round(split * 100)));
