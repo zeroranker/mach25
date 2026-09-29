@@ -4,7 +4,7 @@
   "description": "MACH 25 — a cinematic archive of the machines that escaped Earth",
   "type": "module",
   "scripts": {
-    "start": "node server.mjs",
+    "dev": "node server.mjs",
     "qa": "node qa/qa.mjs"
   },
   "dependencies": {
