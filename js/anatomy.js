@@ -139,7 +139,10 @@ export function initAnatomy() {
     const half = mk('g', { class: 'fairing-half' });
     const hingeX = cx + side * (bodyW / 2);
     const halfW = bodyW / 2;
-    const x0 = side < 0 ? cx - halfW : cx;
+    // outer edge sits on the body wall (either side of the centre seam)
+    const x0 = cx + side * halfW;
+    // curve from the outer-bottom corner up to the nose tip, then down the
+    // centre seam and closed along the base — a real shell half
     const d = `M ${x0} ${fairingSeam}
                C ${x0} ${fairingSeam - noseH * 0.78} ${cx + side * 12} ${bodyTop} ${cx} ${bodyTop}
                L ${cx} ${fairingSeam} Z`;
@@ -267,7 +270,9 @@ export function initAnatomy() {
     // the upper stage lifts off the booster
     stackA.setAttribute('transform', `translate(0 ${-MAX_LIFT * t2})`);
 
-    // fairing halves hinge outward at the seam, then drop away and fade
+    // fairing halves hinge outward at the seam, then drop away and fade.
+    // They stay opaque while they're opening (the split has to read) and
+    // only fade once they've cleared the payload.
     [fairL, fairR].forEach((half) => {
       const side = +half.dataset.side;
       const hx = +half.dataset.hingeX;
@@ -275,7 +280,8 @@ export function initAnatomy() {
       const drop = HALF_DROP * t1;
       half.setAttribute('transform',
         `translate(${side * HALF_DROP * 0.55 * t1} ${drop}) rotate(${swing} ${hx} ${fairingSeam})`);
-      half.setAttribute('opacity', String(Math.max(1 - t1 * 1.25, 0)));
+      const fade = Math.max((t1 - 0.35) / 0.65, 0);
+      half.setAttribute('opacity', String(Math.max(1 - fade * 1.2, 0)));
     });
 
     // the payload is hidden until the fairing opens
