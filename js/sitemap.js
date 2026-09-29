@@ -122,6 +122,24 @@ export function renderSiteMap(events, opts = {}) {
   const layer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
   layer.setAttribute('class', 'smap__sites');
   const markers = [];
+
+  /* Labels for the busy sites (Florida alone hosts three) would stack on
+     each other. Collect every big site's label box, then push each one
+     vertically out of the way of any box already placed — a simple greedy
+     deconfliction that keeps the leader near its dot. */
+  const placed = [];
+  const labelSlot = (x, y, text) => {
+    const w = text.length * 6.1 + 6;   // mono-ish advance estimate
+    const h = 11;
+    let top = y - h + 3.5;
+    // nudge down until it no longer overlaps a previously placed label
+    const overlaps = (a) => a.x < x + 12 + w && x + 12 < a.x + a.w &&
+                             a.y < top + h && top < a.y + a.h;
+    while (placed.some(overlaps) && top < y + 70) top += 13;
+    placed.push({ x: x + 12, y: top, w, h });
+    return top;
+  };
+
   list.forEach((s) => {
     const [x, y] = proj(s.lon, s.lat);
     const big = s.events.length >= 2;
@@ -154,8 +172,11 @@ export function renderSiteMap(events, opts = {}) {
 
     if (big && s.label) {
       const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-      t.setAttribute('x', x + 12); t.setAttribute('y', y + 3.5);
-      t.textContent = s.label.replace(/,.*$/, '').toUpperCase();
+      const name = s.label.replace(/,.*$/, '').toUpperCase();
+      const ly = labelSlot(x, y, name);
+      t.setAttribute('x', x + 12);
+      t.setAttribute('y', ly + 10);
+      t.textContent = name;
       grp.appendChild(t);
     }
     layer.appendChild(grp);

@@ -266,12 +266,21 @@ body.ready .hero__title .line:nth-child(3) .line__in{transition-delay:.2s}
 .stat__k{
   font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;color:var(--ink-3);
   text-transform:uppercase;
+  /* a 3-line label pushes its card's number below the row's baseline —
+     clamp every label to one line so all digits align */
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
 .stat__v{
-  font-family:var(--ff-display);font-weight:700;font-size:clamp(32px,4.4vw,60px);
+  font-family:var(--ff-display);font-weight:700;font-size:clamp(34px,4vw,54px);
   line-height:1;margin:14px 0 6px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;
 }
-.stat__v .u{font-size:.42em;color:var(--ink-3);font-weight:500;letter-spacing:.04em;margin-left:4px}
+/* the unit is a separate line, not an inline suffix: at 205px card width
+   "15,997active" ran together into one smudge and clipped the card edge */
+.stat__v .u{
+  display:block;margin:6px 0 0;
+  font-size:clamp(11px,.8vw,13px);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;font-family:var(--ff-mono);
+}
 .stat__d{font-size:13px;color:var(--ink-2);line-height:1.5}
 .stat__spark{
   display:block;width:100%;height:30px;margin-top:12px;opacity:.8;
@@ -495,6 +504,15 @@ body.ready .hero__title .line:nth-child(3) .line__in{transition-delay:.2s}
 .apart__s{display:flex;gap:clamp(14px,3vw,34px);flex-wrap:wrap;font-family:var(--ff-mono);font-size:11px;color:var(--ink-3)}
 .apart__s b{display:block;color:var(--ink);font-size:15px;font-family:var(--ff-display);font-weight:600;margin-top:3px}
 @media (max-width:900px){ .anatomy{grid-template-columns:1fr} .anatomy__viz{position:static} }
+
+/* a section that failed to boot announces itself instead of looking blank */
+[data-boot-error]::before{
+  content:"⚠ " attr(data-boot-error);
+  display:block;padding:10px 14px;margin-bottom:14px;
+  border:1px solid var(--heat);border-radius:6px;
+  background:rgba(255,90,31,.08);color:var(--heat);
+  font:600 12px/1.5 var(--ff-mono);
+}
 
 /* stage-separation scrubber */
 .sep{

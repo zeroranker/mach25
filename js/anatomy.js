@@ -121,12 +121,10 @@ export function initAnatomy() {
 
   /* ---- the payload: hidden inside the fairing, revealed only once the
        halves fall open. A small satellite — bus, solar wings, dish.
-       Centred in the fairing cavity with clearance for the wings, so it
-       reads as sitting inside the shell rather than poking through it. ---- */
+       It sits on the upper stage deck — a payload bolts to the top of
+       the stack, it does not float in the middle of the cavity. ---- */
   const payload = mk('g', { class: 'payload', opacity: 0 });
-  const fairMid = (bodyTop + fairingSeam) / 2;       // cavity centre
-  const plY = fairMid + 30;                           // bus base, clear of the seam
-  // wings must clear the centre bus and stay inside the fairing cavity
+  const plY = fairingSeam - 8;                        // bus base = stage deck
   const wingHalf = Math.min(13 + bodyW * 0.5 - 4, bodyW * 0.5 - 2) - 13;
   payload.appendChild(mk('rect', { x: cx - 13, y: plY - 40, width: 26, height: 40, rx: 3, fill: '#2b3344', stroke: '#5fe3ff', 'stroke-width': 0.8 }));
   payload.appendChild(mk('rect', { x: cx - 13 - wingHalf, y: plY - 31, width: wingHalf, height: 17, rx: 2, fill: '#232a3a', stroke: '#5fe3ff', 'stroke-width': 0.6 }));
@@ -165,10 +163,15 @@ export function initAnatomy() {
   };
   const fairL = makeFairingHalf(-1);
   const fairR = makeFairingHalf(1);
-  stackA.appendChild(fairL);
-  stackA.appendChild(fairR);
+  /* Jettioned hardware is *not* part of the upper stage: once the halves
+     split they must move independently, so the stage lifting later does
+     not carry the spent fairing back up with it. */
+  const fairing = mk('g', { class: 'fairing' });
+  fairing.appendChild(fairL);
+  fairing.appendChild(fairR);
 
   g.appendChild(stackA);
+  g.appendChild(fairing);
 
   // engine section — stays with the booster
   const engY = bodyBot, engH = 26;
@@ -203,6 +206,10 @@ export function initAnatomy() {
   svg.appendChild(g);
 
   /* ---------- leader lines + labels ---------- */
+  // part 0 = the payload fairing; its leader line is hidden once the
+  // fairing jettisons, otherwise it points at empty sky
+  const FAIRING_PART = 0;
+  const fairingLineEls = [];
   PARTS.forEach((p, i) => {
     const y = bodyTop + (bodyBot + 40 - bodyTop) * p.y;
     const lx = cx + bodyW / 2 + 26;
@@ -212,6 +219,7 @@ export function initAnatomy() {
     const c = mk('circle', { cx: cx + bodyW / 2 + 2, cy: y, r: 3, fill: '#5fe3ff', opacity: 0.35 });
     c.dataset.part = i;
     svg.appendChild(c);
+    if (i === FAIRING_PART) fairingLineEls.push(l, c);
   });
 
   /* ---------- text column ---------- */
@@ -231,6 +239,9 @@ export function initAnatomy() {
   /* ---------- scroll sync ---------- */
   const aparts = $$('.apart', text);
   const lines = $$('[data-part]', svg);
+  // declared here, before sync() first runs, so the scroll handler and the
+  // separation scrubber read the same flag without a temporal-dead-zone error
+  let fairingGone = false;
   function sync() {
     let active = 0;
     aparts.forEach((a, i) => {
@@ -240,6 +251,8 @@ export function initAnatomy() {
     aparts.forEach((a, i) => a.classList.toggle('on', i === active));
     lines.forEach((l) => {
       const i = +l.dataset.part;
+      // jettisoned hardware leaves no line pointing at it
+      if (i === FAIRING_PART && fairingGone) { l.setAttribute('opacity', 0); return; }
       l.setAttribute('opacity', i === active ? 1 : 0.22);
       if (i === active && l.tagName === 'line') l.setAttribute('stroke', '#ff8a3d');
       else if (l.tagName === 'line') l.setAttribute('stroke', '#5fe3ff');
@@ -263,35 +276,46 @@ export function initAnatomy() {
   if (!sepEl) return;
 
   const MAX_LIFT = 84;  // svg units the upper stage rises
-  const HALF_SWING = 34; // degrees each fairing half opens
-  const HALF_DROP = 46;  // how far the spent halves fall before fading
+  const HALF_SWING = 62; // degrees each fairing half opens
+  const HALF_DROP = 30;  // how far the spent halves fall while fading
   let split = 0;
 
   const smooth = (t) => t * t * (3 - 2 * t);
 
   function applySplit() {
-    const t1 = smooth(Math.min(split * 2, 1));   // fairing jettison
-    const t2 = smooth(Math.max(split * 2 - 1, 0)); // stage separation
+    // the jettison takes the first 60% of the drag, separation the last 40%
+    const f = Math.min(split / 0.6, 1);            // fairing phase
+    const t1 = smooth(f);
+    const t2 = smooth(Math.max((split - 0.6) / 0.4, 0)); // stage phase
 
     // the upper stage lifts off the booster
     stackA.setAttribute('transform', `translate(0 ${-MAX_LIFT * t2})`);
 
-    // fairing halves hinge outward at the seam, then drop away and fade.
-    // They stay opaque while they're opening (the split has to read) and
-    // only fade once they've cleared the payload.
+    /* Fairing halves: hinge outward at the seam and fall, staying fully
+       opaque while they open — the split has to be *visible*, the whole
+       point of the sequence — and only fade once they've tumbled clear. */
     [fairL, fairR].forEach((half) => {
       const side = +half.dataset.side;
       const hx = +half.dataset.hingeX;
       const swing = side * HALF_SWING * t1;
       const drop = HALF_DROP * t1;
       half.setAttribute('transform',
-        `translate(${side * HALF_DROP * 0.55 * t1} ${drop}) rotate(${swing} ${hx} ${fairingSeam})`);
-      const fade = Math.max((t1 - 0.35) / 0.65, 0);
-      half.setAttribute('opacity', String(Math.max(1 - fade * 1.2, 0)));
+        `translate(${side * HALF_DROP * 0.8 * t1} ${drop}) rotate(${swing} ${hx} ${fairingSeam})`);
+      // fade only in the last third of the swing, once clear of the payload
+      const fade = Math.max((t1 - 0.7) / 0.3, 0);
+      half.setAttribute('opacity', String(Math.max(1 - fade, 0)));
     });
 
     // the payload is hidden until the fairing opens
     payload.setAttribute('opacity', String(t1));
+
+    // once the fairing has actually departed, its leader line would point
+    // at empty sky — hide it (sync() honours this flag)
+    const gone = t1 > 0.9;
+    if (gone !== fairingGone) {
+      fairingGone = gone;
+      fairingLineEls.forEach((l) => l.setAttribute('opacity', gone ? 0 : null));
+    }
 
     sepFill.style.width = (split * 100) + '%';
     sepHandle.style.left = (split * 100) + '%';

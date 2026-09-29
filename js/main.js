@@ -286,9 +286,20 @@ function renderAll() {
   initChrome();
   initCursor();
   renderAll();
-  try { initHero($('#heroCanvas')); } catch (e) { console.warn('hero scene unavailable', e); }
-  try { initAnatomy(); } catch (e) { console.warn('anatomy unavailable', e); }
-  try { initFleetSection(); } catch (e) { console.warn('fleet unavailable', e); }
-  try { initChartsSection(); } catch (e) { console.warn('charts unavailable', e); }
+  /* A section that fails to boot must not die in silence: a console.warn
+     is invisible to the user and to any regression gate watching for
+     page errors, so a fully dead feature previously passed QA. Flag it
+     on the page itself where it cannot be missed. */
+  const guarded = (name, fn, target) => {
+    try { fn(); } catch (e) {
+      console.warn(name + ' unavailable', e);
+      const el = document.getElementById(target);
+      if (el) el.setAttribute('data-boot-error', name + ': ' + e.message);
+    }
+  };
+  guarded('hero scene', () => initHero($('#heroCanvas')), 'hero');
+  guarded('anatomy', () => initAnatomy(), 'anatomy');
+  guarded('fleet', () => initFleetSection(), 'fleet');
+  guarded('charts', () => initChartsSection(), 'data');
   boot(() => { document.dispatchEvent(new Event('dom:rendered')); });
 })();
