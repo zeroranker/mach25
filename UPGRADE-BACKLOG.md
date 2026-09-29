@@ -131,14 +131,30 @@ U06  Launch-site map                 KEPT  (snap: mach25-snap-u06-sitemap)
      combines a dimmed set with a hovered site, and dimmed sites no longer
      light up with nothing to show.
 
+U10  Anatomy separation scrubber    KEPT  (snap: mach25-snap-u10-separation)
+     A draggable slider under the anatomy SVG splits the vehicle at its
+     real separation planes: the payload stack (nose + fairing) lifts off
+     across the first half of the track, the second stage across the
+     second, with a smoothstep so the motion has weight. Verified in real
+     pixels: the nose rises 68px at split 0.85. It is a genuine slider —
+     arrow keys, Home/End, a focus ring, aria-valuenow — and the hint
+     fades after first use. The vehicle's existing scroll-sync is untouched.
+     Caught + fixed mid-cycle: a temporal-dead-zone error — stageY() was
+     called before bodyY1/bodyY2 were declared, which aborted all of
+     initAnatomy and left the SVG empty; hoisted the declarations. Also
+     guarded setPointerCapture, which threw NotFoundError on synthetic
+     pointer events.
+
+     Deployed: vercel auto-deploys from main; verified on the live URL.
+
 Files touched: index.html, js/main.js, js/ui.js, js/sitemap.js (new),
-css/style.css — all additive. No existing selector, class, or data path
-was altered.
+js/anatomy.js, css/style.css — all additive. No existing selector, class,
+or data path was altered.
 
 ## REMAINING (Tier B/C — deliberately not done)
 U07 keyboard nav · U08 deep-linkable state · U09 SI/imperial toggle ·
-U10 anatomy separation scrubber · U11 motion audit · U12 404 page ·
-U13 print stylesheet · U14 OpenGraph card.
+U11 motion audit · U12 404 page · U13 print stylesheet ·
+U14 OpenGraph card.
 Each is either moderate-risk or cosmetic; the site is verified-good, so
 stopping here per the stop condition.
 
