@@ -267,18 +267,20 @@ function initChartsSection() {
    GO
    ============================================================ */
 function renderAll() {
+  // one launch selection for the countdown and the live strip, so they can
+  // never disagree with each other or drift to a stale NET target
+  const next = UI.nextLaunch(DATA.launches);
   UI.renderPulse(DATA.stats, DATA.meta?.pulseFoot);
-  UI.renderPulseLive(DATA.stats, DATA.launches);
+  UI.renderPulseLive(DATA.stats, next);
   UI.renderLineage(DATA.events);
   renderSiteMap(DATA.events);
   UI.renderEngines(DATA.engines);
   UI.renderLaunches(DATA.launches, DATA.meta?.launchNote);
   UI.renderShock(DATA.facts);
-  if (DATA.launches?.length) UI.initCountdown(DATA.launches[0]);
+  if (next) UI.initCountdown(next);
   UI.initCounters();
   // keep the live "now" strip's countdown fresh (matches the HUD clock cadence)
-  UI.renderPulseLive(DATA.stats, DATA.launches);
-  setInterval(() => UI.renderPulseLive(DATA.stats, DATA.launches), 1000);
+  setInterval(() => UI.renderPulseLive(DATA.stats, next), 1000);
   document.dispatchEvent(new Event('dom:rendered'));
 }
 

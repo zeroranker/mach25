@@ -11,13 +11,12 @@ import {
    ============================================================ */
 /* Live "now" strip: a single telemetry line above the grid. Reuses the
    countdown math and the same stats the grid already renders. */
-export function renderPulseLive(stats, launches) {
+export function renderPulseLive(stats, next) {
   const box = $('#pulseLive');
   if (!box) return;
   const humans = stats.find((s) => s.id === 'humans-now');
   const ytd = stats.find((s) => s.id === 'launches-ytd');
   const prev = stats.find((s) => s.id === 'launches-2025');
-  const next = (launches || []).find((l) => new Date(l.date) > new Date());
 
   const parts = [];
   if (next) {
@@ -437,6 +436,18 @@ export function renderLaunches(launches, note) {
   if (note && $('#launchNote')) $('#launchNote').textContent = note;
 }
 
+/* The next launch shown to the user: prefer the first launch in the future
+   with a CONFIRMED window, falling back to the first future launch of any
+   kind. Picking launches[0] blindly showed a NET target that had already
+   slipped past, freezing the clock at zero under a "window open" banner. */
+export function nextLaunch(launches) {
+  if (!launches?.length) return null;
+  const now = Date.now();
+  const future = launches.filter((l) => new Date(l.date).getTime() > now);
+  if (!future.length) return null;
+  return future.find((l) => l.windowConfirmed) || future[0];
+}
+
 export function initCountdown(launch) {
   const mission = $('#cdMission');
   const clock = $('#cdClock');
@@ -466,7 +477,6 @@ export function initCountdown(launch) {
     }
     if (diff <= 0) {
       if (mission) mission.textContent = `${launch.mission} — LIFTOFF WINDOW OPEN`;
-      setTimeout(() => location.hash || null, 60000);
       return;
     }
     requestAnimationFrame(tick);
