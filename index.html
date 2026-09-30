@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;700&family=Anton&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json" id="ldJson">{"@context":"https://schema.org","@type":"ItemList","name":"MACH 25 — The Rocket Archive","description":"True-scale interactive archive of launch vehicles, built from real flight data.","itemListElement":[{"@type":"ListItem","position":1,"name":"V-2 (A-4)","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":14},{"@type":"PropertyValue","name":"liftoffMassKg","value":12500},{"@type":"PropertyValue","name":"liftoffThrustKN","value":245},{"@type":"PropertyValue","name":"firstFlight","value":"1942-10-03"}]},{"@type":"ListItem","position":2,"name":"Sputnik 8K71PS","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":30},{"@type":"PropertyValue","name":"liftoffMassKg","value":267000},{"@type":"PropertyValue","name":"liftoffThrustKN","value":3886},{"@type":"PropertyValue","name":"firstFlight","value":"1957-10-04"}]},{"@type":"ListItem","position":3,"name":"Saturn V","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":110.6},{"@type":"PropertyValue","name":"liftoffMassKg","value":2970000},{"@type":"PropertyValue","name":"liftoffThrustKN","value":34020},{"@type":"PropertyValue","name":"firstFlight","value":"1967-11-09"}]},{"@type":"ListItem","position":4,"name":"Space Shuttle","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":56.1},{"@type":"PropertyValue","name":"liftoffMassKg","value":2041166},{"@type":"PropertyValue","name":"liftoffThrustKN","value":30250},{"@type":"PropertyValue","name":"firstFlight","value":"1981-04-12"}]},{"@type":"ListItem","position":5,"name":"Soyuz-2.1b","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":46.3},{"@type":"PropertyValue","name":"liftoffMassKg","value":312000},{"@type":"PropertyValue","name":"liftoffThrustKN","value":4147},{"@type":"PropertyValue","name":"firstFlight","value":"2006-12-27"}]},{"@type":"ListItem","position":6,"name":"Atlas V 551","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":58.3},{"@type":"PropertyValue","name":"liftoffMassKg","value":590000},{"@type":"PropertyValue","name":"liftoffThrustKN","value":12272},{"@type":"PropertyValue","name":"firstFlight","value":"2002-08-21"}]},{"@type":"ListItem","position":7,"name":"Falcon 9 Block 5","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":69.8},{"@type":"PropertyValue","name":"liftoffMassKg","value":549000},{"@type":"PropertyValue","name":"liftoffThrustKN","value":7600},{"@type":"PropertyValue","name":"firstFlight","value":"2018-05-11"}]},{"@type":"ListItem","position":8,"name":"Falcon Heavy","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":70},{"@type":"PropertyValue","name":"liftoffMassKg","value":1420000},{"@type":"PropertyValue","name":"liftoffThrustKN","value":22820},{"@type":"PropertyValue","name":"firstFlight","value":"2018-02-06"}]},{"@type":"ListItem","position":9,"name":"Electron","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":18},{"@type":"PropertyValue","name":"liftoffMassKg","value":13000},{"@type":"PropertyValue","name":"liftoffThrustKN","value":224.3},{"@type":"PropertyValue","name":"firstFlight","value":"2017-05-25"}]},{"@type":"ListItem","position":10,"name":"Vega-C","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":34.8},{"@type":"PropertyValue","name":"liftoffMassKg","value":210000},{"@type":"PropertyValue","name":"liftoffThrustKN","value":4323},{"@type":"PropertyValue","name":"firstFlight","value":"2022-07-13"}]},{"@type":"ListItem","position":11,"name":"LVM3 (GSLV Mk III)","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":43.43},{"@type":"PropertyValue","name":"liftoffMassKg","value":640000},{"@type":"PropertyValue","name":"liftoffThrustKN","value":11886},{"@type":"PropertyValue","name":"firstFlight","value":"2014-12-18"}]},{"@type":"ListItem","position":12,"name":"Long March 5","additionalProperty":[{"@type":"PropertyValue","name":"heightMeters","value":56.97},{"@type":"PropertyValue","name":"liftoffMassKg","value":851800},{"@type":"PropertyValue","name":"liftoffThrustKN","value":10634},{"@type":"PropertyValue","name":"firstFlight","value":"2016-11-03"}]}]}</script>
 </head>
 <body class="is-loading">
 
@@ -107,9 +108,25 @@
     <div class="sec__num reveal">01</div>
     <h2 class="sec__title reveal" data-delay="80">PULSE<span class="sec__title-sub">the state of launch</span></h2>
   </div>
-  <div class="pulse__live reveal" id="pulseLive" aria-label="Live telemetry"></div>
-  <div class="pulse__grid" id="pulseGrid"></div>
-  <p class="pulse__foot reveal" id="pulseFoot"></p>
+  <div class="pulse__live reveal" id="pulseLive" aria-label="Live telemetry"><span class="pl__item"><b class="pl__live"><i></i>NEXT LAUNCH</b> <span class="pl__cd">1d 00h</span> <span class="pl__sub">Falcon 9 Block 5 · Cape Canaveral</span></span><span class="pl__sep" aria-hidden="true"></span><span class="pl__item"><b>10</b> <span class="pl__sub">HUMANS IN SPACE NOW</span></span><span class="pl__sep" aria-hidden="true"></span><span class="pl__item"><b>229</b> <span class="pl__sub">ORBITAL ATTEMPTS 2026</span> <span class="pl__vs">vs <b>329</b> all of 2025</span></span></div>
+  <div class="pulse__grid" id="pulseGrid"><div class="stat"><div class="stat__k">Orbital launch attempts in 2025</div>
+      <div class="stat__v">329<span class="u">attempts</span></div>
+      <div class="stat__d">A record year — up roughly 25% on 2024.</div></div><div class="stat"><div class="stat__k">Orbital attempts so far in 2026</div>
+      <div class="stat__v">229<span class="u">YTD</span></div>
+      <div class="stat__d">Live figure, through 23 Sep 2026.</div></div><div class="stat"><div class="stat__k">Falcon 9 launches in a single year</div>
+      <div class="stat__v">165<span class="u">launches</span></div>
+      <div class="stat__d">The busiest rocket in history — ~51% of global launches.</div></div><div class="stat"><div class="stat__k">Soyuz family launches, all time</div>
+      <div class="stat__v">1.1k<span class="u">launches</span></div>
+      <div class="stat__d">The most-flown rocket family ever built.</div></div><div class="stat"><div class="stat__k">Most flights by a single booster</div>
+      <div class="stat__v">37<span class="u">flights</span></div>
+      <div class="stat__d">Falcon 9 B1067, as of Sep 2026.</div></div><div class="stat"><div class="stat__k">Functioning satellites in orbit</div>
+      <div class="stat__v">16.0k<span class="u">active</span></div>
+      <div class="stat__d">Of which roughly 11,150 are Starlink.</div></div><div class="stat"><div class="stat__k">Humans in space right now</div>
+      <div class="stat__v">10<span class="u">people</span></div>
+      <div class="stat__d">7 on ISS · 3 on Tiangong.</div></div><div class="stat"><div class="stat__k">Humans who have flown in space</div>
+      <div class="stat__v">781<span class="u">people</span></div>
+      <div class="stat__d">In 65 years — fewer than fit on a single airliner.</div></div></div>
+  <p class="pulse__foot reveal" id="pulseFoot">Figures compiled 27 Sep 2026 from Jonathan McDowell’s launch statistics, Wikipedia spaceflight records and ESA space-debris tracking. Live counters drift between updates.</p>
 </section>
 
 <!-- ============================ 02 LINEAGE ============================ -->
@@ -120,9 +137,439 @@
   </div>
   <div class="lineage" id="lineageWrap">
     <div class="lineage__hint reveal" id="lineageHint">drag or scroll to travel the timeline →</div>
-    <div class="lineage__eras reveal" id="lineageEras" role="group" aria-label="Filter lineage by era"></div>
+    <div class="lineage__eras reveal" id="lineageEras" role="group" aria-label="Filter lineage by era"><button class="chip-era" data-era="ALL" type="button" aria-pressed="true">ALL<i>43</i></button><button class="chip-era" data-era="Pioneers" type="button" aria-pressed="false">Pioneers<i>1</i></button><button class="chip-era" data-era="WWII" type="button" aria-pressed="false">WWII<i>1</i></button><button class="chip-era" data-era="Post-War" type="button" aria-pressed="false">Post-War<i>1</i></button><button class="chip-era" data-era="Space Race" type="button" aria-pressed="false">Space Race<i>12</i></button><button class="chip-era" data-era="Apollo" type="button" aria-pressed="false">Apollo<i>4</i></button><button class="chip-era" data-era="Shuttle Era" type="button" aria-pressed="false">Shuttle Era<i>7</i></button><button class="chip-era" data-era="Golden Age" type="button" aria-pressed="false">Golden Age<i>1</i></button><button class="chip-era" data-era="ISS Era" type="button" aria-pressed="false">ISS Era<i>2</i></button><button class="chip-era" data-era="Commercial Age" type="button" aria-pressed="false">Commercial Age<i>2</i></button><button class="chip-era" data-era="New Space" type="button" aria-pressed="false">New Space<i>12</i></button></div>
     <div class="smap reveal" id="siteMap" aria-label="Launch sites"></div>
-    <div class="lineage__track" id="lineageTrack"></div>
+    <div class="lineage__track" id="lineageTrack"><article class="ev" data-kind="first" data-era="Pioneers">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">1926-03-16</div>
+      <div class="ev__era">Pioneers</div>
+      <h3 class="ev__title">Goddard flies the first liquid rocket</h3>
+      <p class="ev__desc">The world’s first liquid-fuelled rocket climbed just 12.5 m in 2.5 seconds — but every orbital rocket since is a descendant of that flight.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Nell</b></span>
+        <span>ACTOR <b>Robert H. Goddard</b></span>
+        <span>SITE <b>Auburn, Massachusetts</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="WWII">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">1942-10-03</div>
+      <div class="ev__era">WWII</div>
+      <h3 class="ev__title">V-2 reaches space</h3>
+      <p class="ev__desc">V-4 reached about 85 km and flew 190 km — the first human-made object to touch the edge of space. Its engine, turbopump and gyro guidance invented the template every orbital rocket still follows.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>V-2</b></span>
+        <span>ACTOR <b>von Braun team · Peenemünde</b></span>
+        <span>SITE <b>Peenemünde Test Stand VII</b></span>
+      </div></article><article class="ev" data-kind="milestone" data-era="Post-War">
+      <div class="ev__impact">IMPACT 8/10</div>
+      <div class="ev__date">1945-07-20</div>
+      <div class="ev__era">Post-War</div>
+      <h3 class="ev__title">Operation Paperclip established</h3>
+      <p class="ev__desc">More than 1,600 German scientists and engineers — including Wernher von Braun — were brought to the United States, seeding the programme that would build the Saturn V.</p>
+      <div class="ev__meta">
+        
+        <span>ACTOR <b>US Joint Chiefs of Staff</b></span>
+        
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 10/10</div>
+      <div class="ev__date">1957-10-04</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">Sputnik 1</h3>
+      <p class="ev__desc">A 58 cm, 84 kg beeping sphere began orbiting every 96 minutes. Its radio signal started the Space Age — and the missile race of the Cold War.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>R-7 Semyorka</b></span>
+        <span>ACTOR <b>USSR</b></span>
+        <span>SITE <b>Baikonur Site 1/5</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">1957-11-03</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">Laika reaches orbit</h3>
+      <p class="ev__desc">A stray dog from Moscow became the first animal to orbit Earth, proving living beings could survive launch stresses. She had no return system.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>R-7</b></span>
+        <span>ACTOR <b>USSR</b></span>
+        <span>SITE <b>Baikonur Site 1/5</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 8/10</div>
+      <div class="ev__date">1958-01-31</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">Explorer 1 answers Sputnik</h3>
+      <p class="ev__desc">America’s first satellite discovered the Van Allen radiation belts — the first major scientific discovery of the space age, from a pencil-shaped probe 2,600 km up.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Juno I</b></span>
+        <span>ACTOR <b>NASA / ABMA</b></span>
+        <span>SITE <b>Cape Canaveral LC-26A</b></span>
+      </div></article><article class="ev" data-kind="milestone" data-era="Space Race">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">1958-10-01</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">NASA begins operations</h3>
+      <p class="ev__desc">Created by Eisenhower with 8,000 inherited staff and a roughly $100 million budget — the agency that would put humans on the Moon eleven years later.</p>
+      <div class="ev__meta">
+        
+        <span>ACTOR <b>NASA</b></span>
+        
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 6/10</div>
+      <div class="ev__date">1959-01-02</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">Luna 1 escapes Earth orbit</h3>
+      <p class="ev__desc">A 361 kg probe became the first spacecraft to escape Earth’s gravity and circle the Sun, missing the Moon by 6,000 km.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Luna 1 / 8K72</b></span>
+        <span>ACTOR <b>USSR</b></span>
+        <span>SITE <b>Baikonur</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 10/10</div>
+      <div class="ev__date">1961-04-12</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">Gagarin orbits the Earth</h3>
+      <p class="ev__desc">One orbit, 108 minutes, the first human in space. Gagarin ejected at 7 km and parachuted to Earth — a 27-year-old who never flew a fighter jet before that year.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Vostok-K</b></span>
+        <span>ACTOR <b>Yuri Gagarin · USSR</b></span>
+        <span>SITE <b>Baikonur Site 1/5</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 8/10</div>
+      <div class="ev__date">1961-05-05</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">Alan Shepard: first American in space</h3>
+      <p class="ev__desc">A 15-minute suborbital hop to 187 km — and the first time a human controlled a spacecraft in flight, after a chimpanzee had flown the same profile months earlier.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Mercury-Redstone 3</b></span>
+        <span>ACTOR <b>Alan Shepard · NASA</b></span>
+        <span>SITE <b>Cape Canaveral LC-5</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">1962-02-20</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">John Glenn orbits Earth</h3>
+      <p class="ev__desc">The first American to orbit Earth circled the globe three times in under five hours, on a rocket derived from an ICBM.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Mercury-Atlas 6</b></span>
+        <span>ACTOR <b>John Glenn · NASA</b></span>
+        <span>SITE <b>Cape Canaveral LC-14</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 8/10</div>
+      <div class="ev__date">1963-06-16</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">Tereshkova: first woman in space</h3>
+      <p class="ev__desc">A 26-year-old textile worker orbited Earth 48 times in just under three days — more time in space than every American astronaut combined at that point.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Vostok-K</b></span>
+        <span>ACTOR <b>Valentina Tereshkova · USSR</b></span>
+        <span>SITE <b>Baikonur Site 1/5</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Apollo">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">1967-11-09</div>
+      <div class="ev__era">Apollo</div>
+      <h3 class="ev__title">Saturn V first flight</h3>
+      <p class="ev__desc">Apollo 4 sent the full 110.6 m stack 19,000 km downrange — the first flight of the largest rocket ever built, and the first launch from Pad 39A.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Saturn V</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>KSC LC-39A</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Apollo">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">1968-12-21</div>
+      <div class="ev__era">Apollo</div>
+      <h3 class="ev__title">Apollo 8 leaves Earth orbit</h3>
+      <p class="ev__desc">Three humans became the first to ride a rocket beyond Earth orbit. On Christmas Eve they read Genesis while watching Earth rise over the Moon.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Saturn V</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>KSC LC-39A</b></span>
+      </div></article><article class="ev" data-kind="failure" data-era="Space Race">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">1969-02-21</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">N1 fails on the pad</h3>
+      <p class="ev__desc">The Soviet Moon rocket’s 30-engine first stage erupted into a fireball about 70 seconds after liftoff — the first of four launches, four explosions, that ended the Soviet crewed lunar programme.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>N1</b></span>
+        <span>ACTOR <b>USSR</b></span>
+        <span>SITE <b>Baikonur Site 110</b></span>
+      </div></article><article class="ev" data-kind="launch" data-era="Apollo">
+      <div class="ev__impact">IMPACT 10/10</div>
+      <div class="ev__date">1969-07-16</div>
+      <div class="ev__era">Apollo</div>
+      <h3 class="ev__title">Apollo 11 lifts off</h3>
+      <p class="ev__desc">A 2,800-tonne Saturn V burned 15 tonnes of propellant per second to throw three astronauts toward the Moon. Four days later, 650 million people watched the first footprints in lunar dust.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Saturn V</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>KSC LC-39A</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Apollo">
+      <div class="ev__impact">IMPACT 10/10</div>
+      <div class="ev__date">1969-07-20</div>
+      <div class="ev__era">Apollo</div>
+      <h3 class="ev__title">Apollo 11 lands on the Moon</h3>
+      <p class="ev__desc">Armstrong and Aldrin walked on another world six and a half hours after touchdown, leaving footprints that, with no wind to erase them, may outlast humanity.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Lunar Module Eagle</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>Sea of Tranquility</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 6/10</div>
+      <div class="ev__date">1970-09-12</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">Luna 16 returns Moon dust</h3>
+      <p class="ev__desc">The first robotic lunar sample return: 101 g of Moon soil delivered to Earth by a spacecraft that scooped it, launched it, and landed it autonomously.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Proton-K</b></span>
+        <span>ACTOR <b>USSR</b></span>
+        <span>SITE <b>Baikonur</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Space Race">
+      <div class="ev__impact">IMPACT 8/10</div>
+      <div class="ev__date">1971-04-19</div>
+      <div class="ev__era">Space Race</div>
+      <h3 class="ev__title">Salyut 1: the first space station</h3>
+      <p class="ev__desc">The first orbital habitat — 15 m long, 18.9 t. Its first crew died during re-entry from a valve failure, but the station concept survived into Mir, the ISS and Tiangong.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Proton-K</b></span>
+        <span>ACTOR <b>USSR</b></span>
+        <span>SITE <b>Baikonur</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Shuttle Era">
+      <div class="ev__impact">IMPACT 6/10</div>
+      <div class="ev__date">1977-08-12</div>
+      <div class="ev__era">Shuttle Era</div>
+      <h3 class="ev__title">Enterprise glides free</h3>
+      <p class="ev__desc">A crewed orbiter was released from the back of a 747 at 8,000 ft and glided for five minutes — proving the Shuttle could come home without engines.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Shuttle Enterprise</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>Edwards AFB</b></span>
+      </div></article><article class="ev" data-kind="launch" data-era="Golden Age">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">1977-09-05</div>
+      <div class="ev__era">Golden Age</div>
+      <h3 class="ev__title">Voyager 1 launches</h3>
+      <p class="ev__desc">A probe launched on a 12-year mission to Jupiter and Saturn has now run for 49 years — it left the solar system at 61,146 km/h and is still talking from over 25 billion km away.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Titan IIIE-Centaur</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>Cape Canaveral LC-41</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Shuttle Era">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">1981-04-12</div>
+      <div class="ev__era">Shuttle Era</div>
+      <h3 class="ev__title">STS-1: the Shuttle flies</h3>
+      <p class="ev__desc">Exactly 20 years after Gagarin, Columbia became the first orbital vehicle to fly with a crew on its maiden flight — and the first winged machine to glide back from orbit.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Space Shuttle Columbia</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>KSC LC-39A</b></span>
+      </div></article><article class="ev" data-kind="failure" data-era="Shuttle Era">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">1986-01-28</div>
+      <div class="ev__era">Shuttle Era</div>
+      <h3 class="ev__title">Challenger</h3>
+      <p class="ev__desc">A failed O-ring seal in the right solid booster, exposed by a freezing launch morning, destroyed the vehicle 73 seconds after liftoff. Seven crew lost; the fleet was grounded for 32 months.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Space Shuttle Challenger</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>KSC LC-39B</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Shuttle Era">
+      <div class="ev__impact">IMPACT 8/10</div>
+      <div class="ev__date">1986-02-20</div>
+      <div class="ev__era">Shuttle Era</div>
+      <h3 class="ev__title">Mir: the first modular station</h3>
+      <p class="ev__desc">The first space station assembled in orbit, built module by module over ten years and occupied for 12.5 of its 15 years — the prototype for the ISS.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Proton-K</b></span>
+        <span>ACTOR <b>USSR</b></span>
+        <span>SITE <b>Baikonur</b></span>
+      </div></article><article class="ev" data-kind="milestone" data-era="Shuttle Era">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">1990-04-24</div>
+      <div class="ev__era">Shuttle Era</div>
+      <h3 class="ev__title">Hubble deployed</h3>
+      <p class="ev__desc">An 11,110 kg telescope released at 540 km, peering up to ten billion years back in time. Five servicing missions over 25 years made it the most productive scientific instrument ever flown.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Space Shuttle Discovery</b></span>
+        <span>ACTOR <b>NASA / ESA</b></span>
+        <span>SITE <b>KSC LC-39B</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Shuttle Era">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">1997-07-04</div>
+      <div class="ev__era">Shuttle Era</div>
+      <h3 class="ev__title">Mars Pathfinder and Sojourner</h3>
+      <p class="ev__desc">Sojourner became the first successful planetary rover, rolling off a 100 kg lander that had bounced down in airbags — the template for every Mars mission since.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Delta II</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>Cape Canaveral SLC-17B</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="ISS Era">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">1998-11-20</div>
+      <div class="ev__era">ISS Era</div>
+      <h3 class="ev__title">ISS Zarya launches</h3>
+      <p class="ev__desc">The 20 t control module began the largest object ever assembled in orbit — 100 m wide, 420 t, built from modules launched by five different rockets over 13 years.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Proton-K</b></span>
+        <span>ACTOR <b>Roscosmos / NASA</b></span>
+        <span>SITE <b>Baikonur</b></span>
+      </div></article><article class="ev" data-kind="record" data-era="ISS Era">
+      <div class="ev__impact">IMPACT 10/10</div>
+      <div class="ev__date">2000-11-02</div>
+      <div class="ev__era">ISS Era</div>
+      <h3 class="ev__title">Humanity never left orbit again</h3>
+      <p class="ev__desc">Three crew docked with the ISS and began a permanent human presence off Earth that has now run unbroken for more than a quarter of a century.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Soyuz TM-31</b></span>
+        <span>ACTOR <b>Expedition 1</b></span>
+        <span>SITE <b>Baikonur</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Commercial Age">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">2008-09-28</div>
+      <div class="ev__era">Commercial Age</div>
+      <h3 class="ev__title">Falcon 1 reaches orbit</h3>
+      <p class="ev__desc">On its fourth flight — after three explosions — the first privately funded liquid-fuelled rocket reached orbit, carrying a satellite and the ashes of an Apollo-era engineer.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Falcon 1</b></span>
+        <span>ACTOR <b>SpaceX</b></span>
+        <span>SITE <b>Omelek Island, Kwajalein</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="Commercial Age">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">2010-06-04</div>
+      <div class="ev__era">Commercial Age</div>
+      <h3 class="ev__title">Falcon 9 first flight</h3>
+      <p class="ev__desc">The first nine-engine orbital rocket since Saturn reached orbit on its first attempt — and two years later became the first commercial vehicle to visit the ISS.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Falcon 9</b></span>
+        <span>ACTOR <b>SpaceX</b></span>
+        <span>SITE <b>Cape Canaveral SLC-40</b></span>
+      </div></article><article class="ev" data-kind="milestone" data-era="Shuttle Era">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">2011-07-08</div>
+      <div class="ev__era">Shuttle Era</div>
+      <h3 class="ev__title">The Shuttle retires</h3>
+      <p class="ev__desc">The 135th and final Shuttle launch ended 30 years of reusable flight — and left America without a crewed launch capability for nine years.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Space Shuttle Atlantis</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>KSC LC-39A</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 10/10</div>
+      <div class="ev__date">2015-12-21</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">The booster lands</h3>
+      <p class="ev__desc">After accelerating to Mach 6 and flipping around, a first stage restarted three engines and parked itself on a concrete pad. Rockets became reusable machines that afternoon.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Falcon 9</b></span>
+        <span>ACTOR <b>SpaceX</b></span>
+        <span>SITE <b>Cape Canaveral SLC-40</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 8/10</div>
+      <div class="ev__date">2018-02-06</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">Falcon Heavy and the Roadster</h3>
+      <p class="ev__desc">The most powerful rocket since Saturn V debuted by throwing a Tesla Roadster past Mars’ orbit on 27 engines — while its two side boosters landed side by side on adjacent pads.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Falcon Heavy</b></span>
+        <span>ACTOR <b>SpaceX</b></span>
+        <span>SITE <b>KSC LC-39A</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">2020-05-30</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">First commercial crewed launch</h3>
+      <p class="ev__desc">Nine years after the Shuttle retired, astronauts launched from American soil again — on a commercially built and operated vehicle, the first of its kind.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Falcon 9 / Crew Dragon</b></span>
+        <span>ACTOR <b>SpaceX / NASA</b></span>
+        <span>SITE <b>KSC LC-39A</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">2020-11-23</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">Chang’e 5 brings home Moon rock</h3>
+      <p class="ev__desc">China’s first lunar sample return: 1,731 g of regolith, retrieved, launched from the Moon’s surface and delivered to Earth autonomously — the first new Moon samples in 44 years.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Long March 5</b></span>
+        <span>ACTOR <b>CNSA</b></span>
+        <span>SITE <b>Wenchang</b></span>
+      </div></article><article class="ev" data-kind="launch" data-era="New Space">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">2021-12-25</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">JWST unfolds</h3>
+      <p class="ev__desc">The $10 billion telescope rode an Ariane 5 to a point 1.5 million km away, then unfolded 344 single-point failure mechanisms — every one of them worked.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Ariane 5</b></span>
+        <span>ACTOR <b>ESA / NASA</b></span>
+        <span>SITE <b>Kourou ELA-3</b></span>
+      </div></article><article class="ev" data-kind="failure" data-era="New Space">
+      <div class="ev__impact">IMPACT 8/10</div>
+      <div class="ev__date">2023-04-20</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">Starship’s first flight</h3>
+      <p class="ev__desc">The largest rocket ever built cleared the tower on 33 engines, then tumbled and broke apart four minutes up. The pad survived; the flight data did not.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Starship</b></span>
+        <span>ACTOR <b>SpaceX</b></span>
+        <span>SITE <b>Starbase OLP-1, Texas</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 10/10</div>
+      <div class="ev__date">2024-10-13</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">Mechazilla catches Super Heavy</h3>
+      <p class="ev__desc">A 70 m booster falling at the speed of sound was caught mid-air by two mechanical arms on the launch tower — the most audacious recovery ever attempted, on its first try.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Super Heavy B12</b></span>
+        <span>ACTOR <b>SpaceX</b></span>
+        <span>SITE <b>Starbase OLP-1, Texas</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 8/10</div>
+      <div class="ev__date">2025-01-16</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">New Glenn reaches orbit</h3>
+      <p class="ev__desc">After 25 years of development, Blue Origin’s 98 m reusable orbital rocket flew — the first new American heavy-lift vehicle of the decade, named for the first American to orbit.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>New Glenn</b></span>
+        <span>ACTOR <b>Blue Origin</b></span>
+        <span>SITE <b>Cape Canaveral LC-36</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">2025-11-13</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">New Glenn lands its booster</h3>
+      <p class="ev__desc">On only its second flight, New Glenn’s first stage touched down on a sea platform — making Blue Origin the second company to recover an orbital-class booster.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>New Glenn</b></span>
+        <span>ACTOR <b>Blue Origin</b></span>
+        <span>SITE <b>Cape Canaveral LC-36</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 9/10</div>
+      <div class="ev__date">2026-04-01</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">Artemis II: humans return to deep space</h3>
+      <p class="ev__desc">Four astronauts flew around the Moon — the first crewed lunar mission since 1972 — travelling about 700,000 miles in nine days and setting a new distance record for humans from Earth.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>SLS Block 1</b></span>
+        <span>ACTOR <b>NASA</b></span>
+        <span>SITE <b>KSC LC-39B</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">2026-07-17</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">Vikram-1: India’s private sector reaches orbit</h3>
+      <p class="ev__desc">India’s first privately developed orbital rocket reached orbit on its maiden flight — the first orbital launch by an Indian company, and the first Vikram vehicle since the namesake lander.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Skyroot Vikram-1</b></span>
+        <span>ACTOR <b>Skyroot Aerospace</b></span>
+        <span>SITE <b>Satish Dhawan Space Centre</b></span>
+      </div></article><article class="ev" data-kind="first" data-era="New Space">
+      <div class="ev__impact">IMPACT 7/10</div>
+      <div class="ev__date">2026-09-05</div>
+      <div class="ev__era">New Space</div>
+      <h3 class="ev__title">Spectrum: Europe’s private sector reaches orbit</h3>
+      <p class="ev__desc">After months of delays, a German-built rocket launched from Norwegian soil and reached orbit — the first privately developed European rocket ever to do so, on only its second flight.</p>
+      <div class="ev__meta">
+        <span>VEHICLE <b>Isar Aerospace Spectrum</b></span>
+        <span>ACTOR <b>Isar Aerospace</b></span>
+        <span>SITE <b>Andøya Spaceport, Norway</b></span>
+      </div></article></div>
     <div class="lineage__rail"><div class="lineage__progress" id="lineageProg"></div></div>
   </div>
 </section>
@@ -145,20 +592,22 @@
     <aside class="fleet__panel">
       <div class="fp__head">
         <div>
-          <div class="fp__eyebrow" id="fpEyebrow">VEHICLE / ACTIVE</div>
-          <h3 class="fp__name" id="fpName">—</h3>
-          <div class="fp__meta" id="fpMeta">—</div>
+          <div class="fp__eyebrow" id="fpEyebrow">VEHICLE / IN DEVELOPMENT</div>
+          <h3 class="fp__name" id="fpName">Starship · Super Heavy</h3>
+          <div class="fp__meta" id="fpMeta">SpaceX &nbsp;·&nbsp; United States &nbsp;·&nbsp; First flight Apr 20, 2023</div>
         </div>
-        <div class="fp__tag" id="fpTag">—</div>
+        <div class="fp__tag planned" id="fpTag">In development</div>
       </div>
-      <p class="fp__notes" id="fpNotes">—</p>
-      <div class="fp__specs" id="fpSpecs"></div>
-      <div class="fp__bar" id="fpThrust"></div>
+      <p class="fp__notes" id="fpNotes">The largest and most powerful rocket ever flown — 33 methalox Raptors producing 80.8 MN, more than twice Saturn V. The 100 t LEO figure is a design target: through flight 13 the ship flew only suborbital profiles. The booster is caught out of the air by the launch tower.</p>
+      <div class="fp__specs" id="fpSpecs"><div class="spec"><div class="spec__k">Height</div><div class="spec__v">123.0<small>m</small></div></div><div class="spec"><div class="spec__k">Diameter</div><div class="spec__v">9.0<small>m</small></div></div><div class="spec"><div class="spec__k">Liftoff mass</div><div class="spec__v">4,975<small>t</small></div></div><div class="spec"><div class="spec__k">Stages</div><div class="spec__v">2</div></div><div class="spec"><div class="spec__k">Payload · LEO</div><div class="spec__v">100<small>t</small></div></div><div class="spec"><div class="spec__k">Payload · GTO</div><div class="spec__v">—</div></div><div class="spec"><div class="spec__k">To the Moon</div><div class="spec__v">—</div></div><div class="spec"><div class="spec__k">First stage engines</div><div class="spec__v">33× SpaceX Raptor 3</div></div></div>
+      <div class="fp__bar" id="fpThrust"><div class="spec__k">LIFTOFF THRUST · 8,239 tf (80,800 kN)</div>
+      <div class="fp__bar-track"><div class="fp__bar-fill" style="width:10.197162129779285%"></div></div>
+      <div class="fp__bar-note">10.2% of the most powerful machine ever flown</div></div>
     </aside>
   </div>
 
   <div class="fleet__controls">
-    <div class="fleet__chips" id="fleetChips"></div>
+    <div class="fleet__chips" id="fleetChips"><button class="chip" type="button" data-id="v-2">V-2</button><button class="chip" type="button" data-id="sputnik-8k71ps">R-7 / SPUTNIK</button><button class="chip" type="button" data-id="saturn-v">SATURN V</button><button class="chip" type="button" data-id="space-shuttle">SHUTTLE</button><button class="chip" type="button" data-id="soyuz-2-1b">SOYUZ-2</button><button class="chip" type="button" data-id="atlas-v-551">ATLAS V</button><button class="chip" type="button" data-id="falcon-9-block-5">FALCON 9</button><button class="chip" type="button" data-id="falcon-heavy">FALCON HEAVY</button><button class="chip" type="button" data-id="electron">ELECTRON</button><button class="chip" type="button" data-id="vega-c">VEGA-C</button><button class="chip" type="button" data-id="lvm3">LVM3</button><button class="chip" type="button" data-id="long-march-5">LM-5</button><button class="chip" type="button" data-id="h3">H3</button><button class="chip" type="button" data-id="ariane-6">ARIANE 6</button><button class="chip" type="button" data-id="vulcan-centaur">VULCAN</button><button class="chip" type="button" data-id="new-glenn">NEW GLENN</button><button class="chip" type="button" data-id="sls-block-1">SLS</button><button class="chip" type="button" data-id="starship-super-heavy">STARSHIP</button><button class="chip" type="button" data-id="neutron">NEUTRON</button><button class="chip" type="button" data-id="terran-r">TERRAN R</button><button class="chip" type="button" data-id="long-march-9">LM-9</button></div>
     <div class="fleet__actions">
       <button class="btn btn--ghost btn--sm" id="btnTelem" data-cursor="link"><span>TELEMETRY</span></button>
       <button class="btn btn--ghost btn--sm" id="btnCompare" data-cursor="link"><span>COMPARE MODE</span></button>
@@ -221,7 +670,162 @@
     <h2 class="sec__title reveal" data-delay="80">ENGINES<span class="sec__title-sub">the heart of the machine</span></h2>
   </div>
   <div class="engines">
-    <div class="engines__table" id="engineTable"></div>
+    <div class="engines__table" id="engineTable"><div class="engines__scroll"><table>
+    <thead><tr><th>Engine</th><th>Thrust SL</th><th>Thrust vac</th><th>Isp vac</th><th>Isp SL</th><th>Pc</th><th>Propellant</th><th>First run</th></tr></thead>
+    <tbody><tr>
+      <td>F-1<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Saturn V S-IC ×5 · USA</div></td>
+      <td class="num">6,770 <span class="hot">kN</span></td>
+      <td class="num">7,770 <span class="hot">kN</span></td>
+      <td class="num ice">304 s</td>
+      <td class="num ice">263 s</td>
+      <td class="num">70 bar</td>
+      <td>LOX / RP-1</td>
+      <td class="num">1959</td>
+    </tr><tr>
+      <td>RS-25<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Shuttle ×3 · SLS ×4 · USA</div></td>
+      <td class="num">1,860 <span class="hot">kN</span></td>
+      <td class="num">2,279 <span class="hot">kN</span></td>
+      <td class="num ice">452 s</td>
+      <td class="num ice">366 s</td>
+      <td class="num">206.4 bar</td>
+      <td>LOX / LH2</td>
+      <td class="num">1971</td>
+    </tr><tr>
+      <td>RD-170<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Energia · Zenit · USSR</div></td>
+      <td class="num">7,250 <span class="hot">kN</span></td>
+      <td class="num">7,900 <span class="hot">kN</span></td>
+      <td class="num ice">337 s</td>
+      <td class="num ice">309 s</td>
+      <td class="num">245.2 bar</td>
+      <td>LOX / RG-1</td>
+      <td class="num">1985</td>
+    </tr><tr>
+      <td>Raptor 3<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Starship ×3–6 · Super Heavy ×33 · USA</div></td>
+      <td class="num">2,300 <span class="hot">kN</span></td>
+      <td class="num">2,580 <span class="hot">kN</span></td>
+      <td class="num ice">347 s</td>
+      <td class="num ice">327 s</td>
+      <td class="num">330 bar</td>
+      <td>LOX / CH4</td>
+      <td class="num">2016</td>
+    </tr><tr>
+      <td>BE-4<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Vulcan ×2 · New Glenn ×7 · USA</div></td>
+      <td class="num">2,460 <span class="hot">kN</span></td>
+      <td class="num">—</td>
+      <td class="num ice">340 s</td>
+      <td class="num ice">—</td>
+      <td class="num">140 bar</td>
+      <td>LOX / CH4</td>
+      <td class="num">2024</td>
+    </tr><tr>
+      <td>RD-180<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Atlas III / Atlas V · Russia</div></td>
+      <td class="num">3,830 <span class="hot">kN</span></td>
+      <td class="num">4,150 <span class="hot">kN</span></td>
+      <td class="num ice">338 s</td>
+      <td class="num ice">311 s</td>
+      <td class="num">267 bar</td>
+      <td>LOX / RP-1</td>
+      <td class="num">2000</td>
+    </tr><tr>
+      <td>Merlin 1D<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Falcon 9 ×9 · Heavy ×27 · USA</div></td>
+      <td class="num">845 <span class="hot">kN</span></td>
+      <td class="num">981 <span class="hot">kN</span></td>
+      <td class="num ice">311 s</td>
+      <td class="num ice">282 s</td>
+      <td class="num">97 bar</td>
+      <td>LOX / RP-1</td>
+      <td class="num">2013</td>
+    </tr><tr>
+      <td>RS-68A<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Delta IV Heavy ×3 · USA</div></td>
+      <td class="num">3,137 <span class="hot">kN</span></td>
+      <td class="num">3,560 <span class="hot">kN</span></td>
+      <td class="num ice">412 s</td>
+      <td class="num ice">365 s</td>
+      <td class="num">102.6 bar</td>
+      <td>LOX / LH2</td>
+      <td class="num">2002</td>
+    </tr><tr>
+      <td>Vulcain 2.1<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Ariane 6 core · France / ESA</div></td>
+      <td class="num">—</td>
+      <td class="num">1,359 <span class="hot">kN</span></td>
+      <td class="num ice">429 s</td>
+      <td class="num ice">—</td>
+      <td class="num">117.3 bar</td>
+      <td>LOX / LH2</td>
+      <td class="num">1996</td>
+    </tr><tr>
+      <td>LE-9<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">H3 first stage ×2–3 · Japan</div></td>
+      <td class="num">—</td>
+      <td class="num">1,471 <span class="hot">kN</span></td>
+      <td class="num ice">426 s</td>
+      <td class="num ice">—</td>
+      <td class="num">100 bar</td>
+      <td>LOX / LH2</td>
+      <td class="num">2023</td>
+    </tr><tr>
+      <td>YF-100<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Long March 5 / 6 / 7 / 8 · China</div></td>
+      <td class="num">1,200 <span class="hot">kN</span></td>
+      <td class="num">1,340 <span class="hot">kN</span></td>
+      <td class="num ice">335 s</td>
+      <td class="num ice">300 s</td>
+      <td class="num">180 bar</td>
+      <td>LOX / RP-1</td>
+      <td class="num">2015</td>
+    </tr><tr>
+      <td>RD-107A<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Soyuz boosters ×4 + core · Russia</div></td>
+      <td class="num">839 <span class="hot">kN</span></td>
+      <td class="num">1,020 <span class="hot">kN</span></td>
+      <td class="num ice">320 s</td>
+      <td class="num ice">263 s</td>
+      <td class="num">58.5 bar</td>
+      <td>LOX / RG-1</td>
+      <td class="num">1957</td>
+    </tr><tr>
+      <td>J-2<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Saturn V S-II ×5 · S-IVB ×1 · USA</div></td>
+      <td class="num">—</td>
+      <td class="num">1,033 <span class="hot">kN</span></td>
+      <td class="num ice">421 s</td>
+      <td class="num ice">—</td>
+      <td class="num">52.6 bar</td>
+      <td>LOX / LH2</td>
+      <td class="num">1960</td>
+    </tr><tr>
+      <td>Rutherford<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Electron ×9 + 1 vac · USA / NZ</div></td>
+      <td class="num">25 <span class="hot">kN</span></td>
+      <td class="num">26 <span class="hot">kN</span></td>
+      <td class="num ice">343 s</td>
+      <td class="num ice">311 s</td>
+      <td class="num">—</td>
+      <td>LOX / RP-1</td>
+      <td class="num">2016</td>
+    </tr><tr>
+      <td>H-1<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Saturn I / IB ×8 · USA</div></td>
+      <td class="num">900 <span class="hot">kN</span></td>
+      <td class="num">—</td>
+      <td class="num ice">289 s</td>
+      <td class="num ice">255 s</td>
+      <td class="num">48 bar</td>
+      <td>LOX / RP-1</td>
+      <td class="num">1961</td>
+    </tr><tr>
+      <td>Aestus<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">Ariane 5 EPS upper stage · Germany</div></td>
+      <td class="num">—</td>
+      <td class="num">30 <span class="hot">kN</span></td>
+      <td class="num ice">324 s</td>
+      <td class="num ice">—</td>
+      <td class="num">11 bar</td>
+      <td>N2O4 / MMH</td>
+      <td class="num">1997</td>
+    </tr><tr>
+      <td>A-4 engine<div style="font-family:var(--ff-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.08em;margin-top:3px">V-2 · Germany</div></td>
+      <td class="num">245 <span class="hot">kN</span></td>
+      <td class="num">284 <span class="hot">kN</span></td>
+      <td class="num ice">204 s</td>
+      <td class="num ice">204 s</td>
+      <td class="num">15.2 bar</td>
+      <td>LOX / ethanol</td>
+      <td class="num">1942</td>
+    </tr></tbody></table></div></div>
     <div class="engines__hint" id="engineHint" aria-hidden="true">scroll sideways for full specs →</div>
   </div>
 </section>
@@ -234,12 +838,109 @@
   </div>
   <div class="countdown" id="countdown">
     <div class="countdown__label">COUNTDOWN TO NEXT CONFIRMED LAUNCH</div>
-    <div class="countdown__mission" id="cdMission">—</div>
-    <div class="countdown__clock" id="cdClock"></div>
+    <div class="countdown__mission" id="cdMission">NASA’s SpaceX Crew-13 · Falcon 9 Block 5 (B1101, 3rd flight) · SLC-40, Cape Canaveral</div>
+    <div class="countdown__clock" id="cdClock"><div class="cdunit"><div class="cdunit__v">01</div><div class="cdunit__k">Days</div></div><div class="cdunit"><div class="cdunit__v">00</div><div class="cdunit__k">Hours</div></div><div class="cdunit"><div class="cdunit__v">32</div><div class="cdunit__k">Min</div></div><div class="cdunit"><div class="cdunit__v">57</div><div class="cdunit__k">Sec</div></div></div>
     <div class="countdown__bar"><div id="cdBar"></div></div>
   </div>
-  <div class="launches" id="launchList"></div>
-  <p class="launches__note" id="launchNote"></p>
+  <div class="launches" id="launchList"><div class="lrow head">
+    <div>Window (UTC)</div><div>Mission</div><div>Vehicle</div><div>Destination</div><div>Confidence</div></div><div class="lrow">
+      <div class="lrow__date">Sep 28 · 12:15Z<br/><span style="color:var(--ink-3)">−2d 2h</span></div>
+      <div class="lrow__m">Starship Flight 14<small>26 Starlink v3 satellites — first orbital deployment of v3 · TARGET (NET)</small></div>
+      <div class="lrow__r">Starship-Super Heavy (Ship 41 + Booster 21)</div>
+      <div class="lrow__s">LEO</div>
+      <div class="lrow__t medium">medium</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Oct 1 · 15:10Z<br/><span style="color:var(--ink-3)">+1d 0h</span></div>
+      <div class="lrow__m">NASA’s SpaceX Crew-13 · 4 crew<small>Crew Dragon C-213 “Grace”, 4 crew · CONFIRMED WINDOW</small></div>
+      <div class="lrow__r">Falcon 9 Block 5 (B1101, 3rd flight)</div>
+      <div class="lrow__s">ISS · Expedition 75/76</div>
+      <div class="lrow__t high">high</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Oct 1 · 18:18Z<br/><span style="color:var(--ink-3)">+1d 3h</span></div>
+      <div class="lrow__m">Transporter-18<small>Dedicated sun-synchronous-orbit rideshare · TARGET (NET)</small></div>
+      <div class="lrow__r">Falcon 9 Block 5</div>
+      <div class="lrow__s">SSO</div>
+      <div class="lrow__t medium">medium</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Oct 2 · 03:53Z<br/><span style="color:var(--ink-3)">+1d 13h</span></div>
+      <div class="lrow__m">NROL-97<small>Classified NRO payload · CONFIRMED WINDOW</small></div>
+      <div class="lrow__r">Falcon Heavy (side boosters B1072, B1104)</div>
+      <div class="lrow__s">Classified (likely LEO)</div>
+      <div class="lrow__t high">high</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Oct 7 · 00:00Z<br/><span style="color:var(--ink-3)">+6d 9h</span></div>
+      <div class="lrow__m">Amazon Leo (LE-04)<small>Project Kuiper broadband satellites · TARGET (NET)</small></div>
+      <div class="lrow__r">Ariane 64</div>
+      <div class="lrow__s">LEO</div>
+      <div class="lrow__t medium">medium</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Oct 10 · 00:00Z<br/><span style="color:var(--ink-3)">+9d 9h</span></div>
+      <div class="lrow__m">Starlink 15-25<small>27 Starlink V2 Mini satellites · TARGET (NET)</small></div>
+      <div class="lrow__r">Falcon 9 Block 5 (B1082, 25th flight)</div>
+      <div class="lrow__s">LEO</div>
+      <div class="lrow__t high">high</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Oct 20 · 19:41Z<br/><span style="color:var(--ink-3)">+19d 5h</span></div>
+      <div class="lrow__m">Martian Moons eXploration (MMX)<small>MMX spacecraft — Phobos sample return · CONFIRMED WINDOW</small></div>
+      <div class="lrow__r">H3-24L</div>
+      <div class="lrow__s">Mars (Phobos)</div>
+      <div class="lrow__t high">high</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Oct 1 · 00:00Z<br/><span style="color:var(--ink-3)">+9h 22m</span></div>
+      <div class="lrow__m">CRS SpX-35<small>Cargo Dragon to ISS · TARGET (NET)</small></div>
+      <div class="lrow__r">Falcon 9 Block 5</div>
+      <div class="lrow__s">ISS</div>
+      <div class="lrow__t medium">medium</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Oct 1 · 00:00Z<br/><span style="color:var(--ink-3)">+9h 22m</span></div>
+      <div class="lrow__m">StriX Launch 12<small>StriX SAR satellite for Synspective · TARGET (NET)</small></div>
+      <div class="lrow__r">Electron</div>
+      <div class="lrow__s">LEO</div>
+      <div class="lrow__t medium">medium</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Oct 1 · 00:00Z<br/><span style="color:var(--ink-3)">+9h 22m</span></div>
+      <div class="lrow__m">Bandwagon-5<small>Dedicated mid-inclination rideshare · TARGET (NET)</small></div>
+      <div class="lrow__r">Falcon 9 Block 5</div>
+      <div class="lrow__s">LEO (mid-inclination)</div>
+      <div class="lrow__t medium">medium</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Nov 19 · 00:00Z<br/><span style="color:var(--ink-3)">+49d 9h</span></div>
+      <div class="lrow__m">MKA Kinosputnik cluster<small>Russian smallsat cluster · TARGET (NET)</small></div>
+      <div class="lrow__r">Soyuz 2.1a / Fregat-M</div>
+      <div class="lrow__s">LEO</div>
+      <div class="lrow__t medium">medium</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Nov 24 · 05:03Z<br/><span style="color:var(--ink-3)">+54d 14h</span></div>
+      <div class="lrow__m">Progress MS-36<small>ISS resupply cargo · CONFIRMED WINDOW</small></div>
+      <div class="lrow__r">Soyuz 2.1b</div>
+      <div class="lrow__s">ISS</div>
+      <div class="lrow__t high">high</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Nov 1 · 00:00Z<br/><span style="color:var(--ink-3)">+31d 9h</span></div>
+      <div class="lrow__m">MetOp-SG B1<small>Second MetOp-SG weather satellite · TARGET (NET)</small></div>
+      <div class="lrow__r">Ariane 62</div>
+      <div class="lrow__s">LEO (polar)</div>
+      <div class="lrow__t medium">medium</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Nov 1 · 00:00Z<br/><span style="color:var(--ink-3)">+31d 9h</span></div>
+      <div class="lrow__m">Griffin Mission One<small>Intuitive Machines Griffin lunar lander (CLPS) · TARGET (NET)</small></div>
+      <div class="lrow__r">Falcon Heavy</div>
+      <div class="lrow__s">Moon (south pole)</div>
+      <div class="lrow__t low">low</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Dec 1 · 00:00Z<br/><span style="color:var(--ink-3)">+61d 9h</span></div>
+      <div class="lrow__m">Ekspress-AMU4<small>Russian communications satellite · TARGET (NET)</small></div>
+      <div class="lrow__r">Proton-M / Briz-M</div>
+      <div class="lrow__s">GEO</div>
+      <div class="lrow__t medium">medium</div>
+    </div><div class="lrow">
+      <div class="lrow__date">Dec 1 · 00:00Z<br/><span style="color:var(--ink-3)">+61d 9h</span></div>
+      <div class="lrow__m">CRS NG-25<small>Cygnus cargo spacecraft to ISS · TARGET (NET)</small></div>
+      <div class="lrow__r">Falcon 9 Block 5</div>
+      <div class="lrow__s">ISS</div>
+      <div class="lrow__t medium">medium</div>
+    </div></div>
+  <p class="launches__note" id="launchNote">Manifest compiled 27 Sep 2026 from Spaceflight Now, SpaceX and agency sources. Dates marked NET are “no earlier than” planning targets and routinely slip — check the launch provider for the live window.</p>
 </section>
 
 <!-- ============================ 08 SHOCK ============================ -->
@@ -249,7 +950,70 @@
     <h2 class="sec__title reveal" data-delay="80">SHOCK<span class="sec__title-sub">numbers that don't compute</span></h2>
   </div>
   <div class="marquee" id="marquee" aria-hidden="true"></div>
-  <div class="shock" id="shockGrid"></div>
+  <div class="shock" id="shockGrid"><article class="fact">
+      <div class="fact__n">170<span class="u">GW</span></div>
+      <div class="fact__t">Igniting Saturn V’s five F-1s released chemical energy at roughly 170 GW — about 80 times the peak output of the Hoover Dam, concentrated in a 110 m tube.</div>
+      <div class="fact__e">Apollo · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">12.9k<span class="u">kg/s</span></div>
+      <div class="fact__t">The five F-1 engines together drank 12,890 kg of propellant every second — 4,880 litres of kerosene alone, enough to fill an Olympic swimming pool in eight and a half minutes.</div>
+      <div class="fact__e">Apollo · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">2.2k<span class="u">t</span></div>
+      <div class="fact__t">Saturn V’s 42 m first stage stood on the pad at 2,214 tonnes fully fuelled — and was drained completely dry in 165 seconds.</div>
+      <div class="fact__e">Apollo · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">81<span class="u">MN</span></div>
+      <div class="fact__t">Starship’s 33 Raptors produce 80.8 MN at liftoff — more than twice Saturn V’s 34.5 MN. It is the most power ever controlled by a human-made machine.</div>
+      <div class="fact__e">New Space · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">8<span class="u">km/s</span></div>
+      <div class="fact__t">To stay in orbit a rocket must reach 7.8 km/s — Mach 23, about 28,000 km/h — and it has roughly eight minutes to do it from a standing start.</div>
+      <div class="fact__e">Physics · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">20<span class="u">×</span></div>
+      <div class="fact__t">The rocket equation made flesh: Saturn V stood 2,822 tonnes on the pad to deliver 140 tonnes to orbit — roughly 20 kg of rocket and propellant for every 1 kg of payload.</div>
+      <div class="fact__e">Physics · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">37<span class="u">flights</span></div>
+      <div class="fact__t">A single Falcon 9 booster has now flown 37 missions — a machine that cost tens of millions of dollars, reused like an airliner.</div>
+      <div class="fact__e">New Space · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">9<span class="u">days</span></div>
+      <div class="fact__t">Falcon 9 booster B1088 flew twice just 9 days, 3 hours and 39 minutes apart — the fastest turnaround of any orbital-class booster ever.</div>
+      <div class="fact__e">New Space · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">16.0k<span class="u">active</span></div>
+      <div class="fact__t">Around 16,000 functioning satellites now orbit Earth, of which roughly 11,150 belong to a single constellation: Starlink.</div>
+      <div class="fact__e">Now · aerospaceglobalnews.com</div></article><article class="fact">
+      <div class="fact__n">1.0k<span class="u">sats</span></div>
+      <div class="fact__t">Falcon 9 booster B1071 became the first to launch 1,000 cumulative spacecraft — a single first stage has now dispensed more satellites than most whole space programmes.</div>
+      <div class="fact__e">New Space · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">39.9k<span class="u">km/h</span></div>
+      <div class="fact__t">The fastest humans ever travelled were the Apollo 10 crew, re-entering at 39,897 km/h — a record unbroken for 57 years.</div>
+      <div class="fact__e">Apollo · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">192<span class="u">km/s</span></div>
+      <div class="fact__t">Parker Solar Probe is the fastest object ever built: 191.7 km/s relative to the Sun, fast enough to cross the Atlantic in 28 seconds.</div>
+      <div class="fact__e">Now · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">59.7k<span class="u">$/kg</span></div>
+      <div class="fact__t">The Space Shuttle cost about $59,700 to put one kilogramme in orbit. A reusable Falcon 9 lists at roughly $3,250 — an eighteenfold collapse in the price of escape.</div>
+      <div class="fact__e">Shuttle → New Space · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">9.0k<span class="u">days</span></div>
+      <div class="fact__t">Humans have lived continuously off Earth since 2 November 2000 — more than 9,000 unbroken days of occupation in orbit.</div>
+      <div class="fact__e">ISS Era · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">1.1k<span class="u">launches</span></div>
+      <div class="fact__t">The Soyuz rocket family has flown more than 1,150 times — nobody has ever built a more reliable machine for leaving the planet.</div>
+      <div class="fact__e">Workhorses · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">257.0k<span class="u">hp</span></div>
+      <div class="fact__t">The RD-170’s single turbopump delivers 257,000 hp to four combustion chambers at once — the power of three nuclear icebreakers in one machine.</div>
+      <div class="fact__e">Soviet · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">14.7k<span class="u">kN</span></div>
+      <div class="fact__t">One Shuttle solid booster pushed out 14,700 kN at liftoff — about 29 times the thrust of a GE90, the most powerful jet engine ever built.</div>
+      <div class="fact__e">Shuttle · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">1.1M<span class="u">L</span></div>
+      <div class="fact__t">Every Shuttle launch sprayed 1.1 million litres of water under the stack at T-16 s — without it, the SRBs’ acoustic energy would have shaken the orbiter to pieces.</div>
+      <div class="fact__e">Shuttle · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">1.4k<span class="u">°C</span></div>
+      <div class="fact__t">A Starship re-entering at orbital speed generates plasma near 1,400 °C — hot enough to vaporise aluminium, deflected by 18,000 hexagonal silica tiles.</div>
+      <div class="fact__e">Physics · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">16<span class="u">km/s</span></div>
+      <div class="fact__t">New Horizons left Earth at 16.26 km/s — the fastest departure ever, crossing the Moon’s orbit in nine hours on a trip that took Apollo crews three days.</div>
+      <div class="fact__e">Golden Age · en.wikipedia.org</div></article><article class="fact">
+      <div class="fact__n">2.6k<span class="u">m/s</span></div>
+      <div class="fact__t">An F-1’s exhaust leaves the nozzle at about 2,580 m/s — nearly three times the muzzle velocity of a 5.56 mm rifle bullet.</div>
+      <div class="fact__e">Apollo · en.wikipedia.org</div></article></div>
 </section>
 
 </main>
@@ -272,7 +1036,7 @@
     </div>
     <div>
       <h4>SOURCES</h4>
-      <span id="footSources">NASA · ESA · Wikipedia · Manufacturer data</span>
+      <span id="footSources">NASA · ESA · JAXA · Roscosmos · CNSA · ISRO · SpaceX · ULA · Arianespace · Rocket Lab · Blue Origin · Wikipedia · Jonathan McDowell (planet4589) · Spaceflight Now</span>
     </div>
   </div>
   <div class="foot__base">

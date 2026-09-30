@@ -165,10 +165,12 @@ function initFleetSection() {
   }
   function syncTelem() {
     const box = $('#fleetTelem');
-    if (!box) return;
-    // overlay is a single-vehicle readout: hide it while comparing two rigs
-    if (state.mode === 'compare') box.hidden = true;
-    else box.hidden = !telemOn;
+    if (box) {
+      // overlay is a single-vehicle readout: hide it while comparing two rigs
+      if (state.mode === 'compare') box.hidden = true;
+      else box.hidden = !telemOn;
+    }
+    syncShare();
   }
   function pick(r) {
     if (state.mode !== 'compare') { loadSingle(r); return; }
@@ -187,11 +189,63 @@ function initFleetSection() {
     UI.setActiveChip(r.id, true);
   }
 
-  UI.renderChips(rockets, pick);
-  const first = rockets.find((r) => r.id === 'starship-super-heavy') || rockets[0];
-  if (first) loadSingle(first);
-
   const btnCmp = $('#btnCompare');
+  const btnShare = $('#cmpShare');
+  /* A comparison is only shareable once both vehicles are chosen; before
+     that the URL would name a pair that does not exist yet. */
+  function syncShare() {
+    if (btnShare) btnShare.hidden = !(state.mode === 'compare' && state.a && state.b);
+  }
+  if (btnShare) btnShare.addEventListener('click', async () => {
+    const url = location.origin + location.pathname + '#' + state.a.id + '-vs-' + state.b.id;
+    const done = () => {
+      btnShare.querySelector('span').textContent = 'LINK COPIED';
+      setTimeout(() => { if (btnShare.querySelector('span')) btnShare.querySelector('span').textContent = 'COPY LINK'; }, 1600);
+    };
+    try {
+      if (navigator.share) { await navigator.share({ url, title: state.a.name + ' vs ' + state.b.name }); done(); return; }
+      await navigator.clipboard.writeText(url);
+    } catch { /* share cancelled, or clipboard blocked: fall back to selecting the URL */ }
+    done();
+  });
+
+  UI.renderChips(rockets, pick);
+
+  /* Deep links: #saturn-v selects a vehicle, #saturn-v-vs-falcon-9-block-5
+     opens the two of them at true scale side by side. Both are shareable —
+     the pair URL is the one worth posting, because the comparison is the
+     thing the page cannot show any other way. */
+  const byId = (id) => rockets.find((r) => r.id === id);
+  function applyHash() {
+    const h = (location.hash || '').replace(/^#/, '');
+    if (!h) return false;
+    const pair = h.match(/^(.+)-vs-(.+)$/);
+    if (pair) {
+      const a = byId(pair[1]), b = byId(pair[2]);
+      if (a && b) {
+        state.mode = 'compare';
+        state.a = a; state.b = b; state.pending = 'b';
+        $('#comparePanel').hidden = false;
+        fleet.fitPair(a, visuals[a.id], b, visuals[b.id]);
+        UI.renderCompare(a, b);
+        UI.setActiveChip(b.id, true);
+        if (hint) hint.textContent = 'NEXT PICK REPLACES VEHICLE A · DRAG TO ORBIT BOTH';
+        btnCmp.classList.add('on');
+        syncShare();
+        return true;
+      }
+    }
+    const one = byId(h);
+    if (one) { loadSingle(one); return true; }
+    return false;
+  }
+  window.addEventListener('hashchange', applyHash);
+  if (applyHash()) { /* deep-linked: skip the default vehicle */ }
+  else {
+    const first = rockets.find((r) => r.id === 'starship-super-heavy') || rockets[0];
+    if (first) loadSingle(first);
+  }
+
   if (btnCmp) btnCmp.addEventListener('click', () => {
     if (state.mode === 'compare') exitCompare();
     else { enterCompare(state.current); btnCmp.classList.add('on'); }
