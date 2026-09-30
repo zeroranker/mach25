@@ -1521,15 +1521,40 @@ export function initFleet(canvas, stageEl, onRuler) {
     const fitW = ((radius || 2) * 2 * 1.3) / Math.tan(hFov / 2);
     return Math.max(fitH, fitW, 9);
   }
-  function fitSingle(r, visual) {
-    clearContent();
+  /* project the loaded vehicle's base and tip to stage-relative pixels so the
+     HTML ruler can be drawn at exactly the model's scale */
+  function pairInfo(g) {
+    if (!g) return null;
+    const sh = canvas.clientHeight || 1;
+    const bb = new THREE.Box3().setFromObject(g);
+    const projectY = (worldY) => {
+      const v = new THREE.Vector3(0, worldY, 0).project(camera);
+      return sh * (1 - v.y) / 2;
+    };
+    return { noseY: projectY(bb.max.y), baseY: projectY(bb.min.y) };
+  }
+
+  function fitSingle(r, visual) {    clearContent();
     const g = buildRocket(r, visual);
-    // centre horizontally on the ground; camera frames by height
+    /* Some builders add engine bells or skirts that reach below the base
+       (Saturn V F-1s, Shuttle SRB nozzles). Rescale the whole stack so its
+       REAL base-to-tip span equals the declared height, then sit it on the
+       pad. Without this the vehicle is taller than spec and the bells punch
+       through the ground; the ruler then lies about both ends. */
+    const target = r.height > 0 ? r.height : (g.userData.height2 || r.height);
+    const bb = new THREE.Box3().setFromObject(g);
+    const realH = bb.max.y - bb.min.y;
+    if (realH > target * 1.001) g.scale.setScalar(target / realH);
+    // offset AFTER scaling so the base lands exactly on y = 0
+    const bb2 = new THREE.Box3().setFromObject(g);
+    if (bb2.min.y < 0) g.position.y = -bb2.min.y;
     content.add(g);
     const sh = shadowFor(g, r.height, g.userData.radius);
     content.add(sh);
     current = g;
-    const H = Math.max(r.height, g.userData.height2);
+    // frame and rule against the DECLARED height, matching the rescale above,
+    // so the ruler and the model always agree
+    const H = target;
     const sweep = g.userData.sweep || g.userData.radius;
     content.add(auraFor(H, sweep));
     content.add(dustFor(H, sweep));
@@ -1542,14 +1567,19 @@ export function initFleet(canvas, stageEl, onRuler) {
     rig.yaw = rig.targetYaw;
     rig.targetPitch = 0.1;
     applyCamera();
-    if (onRuler) onRuler(H);
-    // entrance pop
-    g.scale.set(0.92, 0.92, 0.92);
+    // ruler ticks are positioned from the model's own projection, so the
+    // ruler and the vehicle can never disagree about scale
+    const proj = pairInfo(g);
+    if (onRuler) onRuler(H, proj);
+    // entrance pop — multiplies the fit scale rather than replacing it, so
+    // the base-to-tip rescale above survives the animation
+    const baseScale = g.scale.x;
+    g.scale.setScalar(baseScale * 0.92);
     const t0 = performance.now();
     (function pop() {
       const t = Math.min((performance.now() - t0) / 520, 1);
       const e = 1 - Math.pow(1 - t, 3);
-      g.scale.setScalar(0.92 + 0.08 * e);
+      g.scale.setScalar(baseScale * (0.92 + 0.08 * e));
       if (t < 1) requestAnimationFrame(pop);
     })();
   }
@@ -1558,8 +1588,18 @@ export function initFleet(canvas, stageEl, onRuler) {
     clearContent();
     const ga = buildRocket(ra, va);
     const gb = buildRocket(rb, vb);
+    // sit both on the pad, rescaled to their declared heights (see fitSingle)
+    for (const g of [ga, gb]) {
+      const spec = g === ga ? ra.height : rb.height;
+      const target = spec > 0 ? spec : (g.userData.height2 || spec);
+      const bb = new THREE.Box3().setFromObject(g);
+      const realH = bb.max.y - bb.min.y;
+      if (realH > target * 1.001) g.scale.setScalar(target / realH);
+      const bb2 = new THREE.Box3().setFromObject(g);
+      if (bb2.min.y < 0) g.position.y = -bb2.min.y;
+    }
     const maxR = Math.max(ra.diameter || 4, rb.diameter || 4) / 2;
-    const H = Math.max(ra.height, rb.height, ga.userData.height2, gb.userData.height2);
+    const H = Math.max(ra.height, rb.height);
     // separate by a fraction of the taller rocket so both are clearly readable
     const sep = Math.max(maxR * 3.1, H * 0.34);
     ga.position.x = -sep / 2;
@@ -1577,7 +1617,8 @@ export function initFleet(canvas, stageEl, onRuler) {
     rig.yaw = rig.targetYaw;
     rig.targetPitch = 0.12;
     applyCamera();
-    if (onRuler) onRuler(H, { a: ra, b: rb });
+    lastFrame = { H, sweep: sep * 0.72, pairProj: pairInfo(ga) };
+    if (onRuler) onRuler(H, { a: ra, b: rb, proj: pairInfo(ga) });
   }
 
   /* ---------- interaction ---------- */
@@ -1608,7 +1649,7 @@ export function initFleet(canvas, stageEl, onRuler) {
   function resetView() {
     if (current) {
       const r = current.userData.spec;
-      const H = Math.max(r.height, current.userData.height2);
+      const H = r.height > 0 ? r.height : (current.userData.height2 || r.height);
       const sweep = current.userData.sweep || current.userData.radius;
       look.set(0, H * 0.5, 0);
       rig.targetDist = frameDist(camera, H, sweep);
@@ -1648,6 +1689,18 @@ export function initFleet(canvas, stageEl, onRuler) {
     }, { threshold: 0 }).observe(stageEl);
   }
 
+  /* keep the HTML ruler locked to the model: the camera orbits continuously,
+     so a ruler drawn once at load drifts out of sync within a second */
+  let lastRulerAt = 0;
+  function refreshRuler() {
+    if (!onRuler || !lastFrame) return;
+    if (performance.now() - lastRulerAt < 90) return; // throttle to ~11 Hz
+    lastRulerAt = performance.now();
+    const g = current;
+    if (g) onRuler(lastFrame.H, pairInfo(g));
+    else if (lastFrame.pairProj) onRuler(lastFrame.H, { proj: lastFrame.pairProj });
+  }
+
   /* ---------- loop ---------- */
   const clock = new THREE.Clock();
   function tick() {
@@ -1658,10 +1711,12 @@ export function initFleet(canvas, stageEl, onRuler) {
       if (idleTimer > 3.5) autoRotate = true;
     }
     if (autoRotate) rig.targetYaw += dt * 0.12;
+    const yawed = Math.abs(rig.targetYaw - rig.yaw) > 1e-4;
     rig.yaw = damp(rig.yaw, rig.targetYaw, 4, dt);
     rig.pitch = damp(rig.pitch, rig.targetPitch, 4, dt);
     rig.dist = damp(rig.dist, rig.targetDist, 4, dt);
     applyCamera();
+    if (autoRotate || yawed || dragging) refreshRuler();
     // drift the embers upward, looping at the vehicle's height
     content.traverse((o) => {
       if (o.name !== 'dust') return;

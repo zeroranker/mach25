@@ -276,9 +276,31 @@ export function renderRuler(height, pair) {
   if (!ruler) return;
   ruler.innerHTML = '';
   const step = height > 80 ? 20 : height > 30 ? 10 : 5;
-  for (let h = 0; h <= Math.ceil(height / step) * step; h += step) {
+  const maxH = Math.ceil(height / step) * step;
+
+  /* Position ticks from the model's own projected base/nose when available.
+     Framing the vehicle in the camera uses a different vertical span than
+     the ruler's CSS box, so labelling by percentage alone made the ruler up
+     to ~2x the model's scale — the "true scale" claim was false. Anchoring
+     on the projection keeps the two in exact agreement. */
+  let scale = null; // px per metre within the ruler's own box
+  const proj = pair && (pair.proj || pair);
+  if (proj && typeof proj.noseY === 'number' && typeof proj.baseY === 'number'
+      && proj.baseY > proj.noseY) {
+    const span = proj.baseY - proj.noseY;
+    if (span > 4) scale = span / height;
+  }
+  const place = (h) => {
+    if (scale) {
+      // align the 0 m tick with the projected base, stacking upward in px
+      return { top: `calc(${(proj.baseY - h * scale).toFixed(1)}px)` };
+    }
+    return { top: (100 - (h / maxH) * 100) + '%' };
+  };
+
+  for (let h = 0; h <= maxH; h += step) {
     const t = el('div', 'tick');
-    t.style.top = (100 - (h / height) * 100) + '%';
+    Object.assign(t.style, place(h));
     t.innerHTML = `<span>${h} m</span>`;
     ruler.appendChild(t);
   }
