@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://mach25-n64r.vercel.app/sitemap.xml

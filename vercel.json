@@ -6,7 +6,6 @@
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
-  "buildCommand": "node tools/prerender.mjs",
   "headers": [
     {
       "source": "/(.*)",
